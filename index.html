@@ -143,6 +143,15 @@ html,body{
   stroke:var(--text);fill:none;stroke-width:0.9;
 }
 
+/* ── stage 3 caption (always visible below input) ── */
+.s3-caption{
+  margin-top:22px;
+  font-style:italic;
+  font-size:clamp(13px,1.8vw,16px);
+  font-weight:300;letter-spacing:0.1em;
+  color:rgba(230,224,212,0.38);
+}
+
 /* ── stage 3 subtext ── */
 .subtext{
   font-size:clamp(13px,2vw,16px);
@@ -260,7 +269,7 @@ html,body{
   </div>
 </div>
 <div id="s1-hint">where are you returning to?</div>
-<div id="s3-hint">the word that calls you home</div>
+<div id="s3-hint">one word</div>
 <div class="wrong" id="s1w">Not yet.</div>
 
 <!-- Stage 2 -->
@@ -298,6 +307,7 @@ html,body{
     <form id="s3form" onsubmit="return false" style="margin:0">
       <input class="s-input" id="s3in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </form>
+    <p class="s3-caption">come home to yourself</p>
   </div>
 </div>
 
@@ -435,13 +445,11 @@ async function stage3() {
   if (window.innerWidth > 680) input.focus();
 
   const s3hint = $('s3-hint');
-  let s3hintTimer = setTimeout(() => reveal(s3hint), 10000);
 
   let s3tries = 0;
   async function s3submit() {
     const raw = input.value.trim().toLowerCase().replace(/['']/g, "'");
     if (!raw) return;
-    clearTimeout(s3hintTimer);
     const isHome = raw === 'home';
     const isFallback = s3tries >= 4 && (
       raw === 'yes' || raw === 'i am' || raw === 'i do' ||
@@ -454,7 +462,7 @@ async function stage3() {
     } else {
       s3tries++;
       input.value = '';
-      reveal(s3hint);
+      if (s3tries >= 2) reveal(s3hint);
     }
   }
   $('s3form').addEventListener('submit', s3submit);
