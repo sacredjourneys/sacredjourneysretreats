@@ -76,9 +76,9 @@ html,body{
   bottom:max(14vh,80px);
   left:50%;transform:translateX(-50%);
   font-style:italic;
-  font-size:clamp(11px,1.6vw,13px);
+  font-size:clamp(13px,1.8vw,16px);
   letter-spacing:0.1em;
-  color:var(--whisper);
+  color:rgba(230,224,212,0.42);
   opacity:0;pointer-events:none;
   transition:opacity 3s ease;
   white-space:nowrap;
@@ -202,14 +202,14 @@ html,body{
 .f-ig{
   display:block;margin-top:28px;
   font-style:italic;
-  font-size:clamp(10px,1.4vw,12px);
+  font-size:clamp(12px,1.6vw,15px);
   letter-spacing:0.14em;
-  color:rgba(220,205,180,0.2);
+  color:rgba(220,205,180,0.48);
   text-decoration:none;
   opacity:0;transition:opacity 2.2s ease 3.8s, color 0.3s;
 }
 .f-ig.in{opacity:1}
-.f-ig:hover{color:rgba(220,205,180,0.45)}
+.f-ig:hover{color:rgba(220,205,180,0.75)}
 
 /* ── mobile ── */
 @media(max-width:480px){
@@ -225,7 +225,9 @@ html,body{
 <div class="stage" id="s1">
   <p class="phrase" id="s1p">You are the medicine.</p>
   <div class="input-wrap" id="s1iw">
-    <input class="s-input" id="s1in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <form id="s1form" onsubmit="return false" style="margin:0">
+      <input class="s-input" id="s1in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </form>
   </div>
 </div>
 <div id="s1-hint">where are you returning to?</div>
@@ -263,7 +265,9 @@ html,body{
   <p class="phrase" id="s3p">Surrender over force.</p>
   <p class="subtext" id="s3sub">If you are ready, say so.</p>
   <div class="input-wrap" id="s3iw">
-    <input class="s-input" id="s3in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <form id="s3form" onsubmit="return false" style="margin:0">
+      <input class="s-input" id="s3in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </form>
   </div>
 </div>
 
@@ -329,13 +333,11 @@ async function stage1() {
     hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
   });
 
-  input.addEventListener('keydown', async e => {
-    if (e.key !== 'Enter') return;
-    const val = input.value.trim().toLowerCase();
+  async function s1submit() {
+    const val = input.value.trim().toLowerCase().replace(/['']/g, "'");
     clearTimeout(hintTimer);
     unreval($('s1-hint'));
-
-    if (val === 'home') {
+    if (val === 'i am' || val === 'i am.' || val === 'iam') {
       input.blur();
       await crossfade('s2');
       stage2();
@@ -348,7 +350,9 @@ async function stage1() {
       if (window.innerWidth > 680) input.focus();
       hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
     }
-  });
+  }
+  $('s1form').addEventListener('submit', s1submit);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); s1submit(); } });
 }
 
 // ── Stage 2 ───────────────────────────────────────────────────────────────────
@@ -396,19 +400,25 @@ async function stage3() {
   const input = $('s3in');
   if (window.innerWidth > 680) input.focus();
 
-  input.addEventListener('keydown', async e => {
-    if (e.key !== 'Enter') return;
+  let s3tries = 0;
+  async function s3submit() {
     const raw = input.value.trim().toLowerCase().replace(/['']/g, "'");
-    const ready =
-      raw === 'yes' || raw === 'ready' || raw === 'i am' ||
-      raw.includes('ready') || raw.includes('i am') ||
-      raw.startsWith('yes') || raw === 'i do';
-
-    if (ready) {
+    if (!raw) return;
+    const isHome = raw === 'home';
+    const isFallback = s3tries >= 4 && (
+      raw === 'yes' || raw === 'i am' || raw === 'i do' ||
+      raw.includes('ready') || raw.includes('yes') || raw.includes('i am')
+    );
+    if (isHome || isFallback) {
       input.blur();
       await particleFade();
+    } else {
+      s3tries++;
+      input.value = '';
     }
-  });
+  }
+  $('s3form').addEventListener('submit', s3submit);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); s3submit(); } });
 }
 
 // ── Particle fade ─────────────────────────────────────────────────────────────
