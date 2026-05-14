@@ -85,20 +85,6 @@ html,body{
 }
 #s1-hint.in{opacity:1}
 
-#s3-hint{
-  position:fixed;
-  bottom:max(14vh,80px);
-  left:50%;transform:translateX(-50%);
-  font-style:italic;
-  font-size:clamp(13px,1.8vw,16px);
-  letter-spacing:0.1em;
-  color:rgba(230,224,212,0.42);
-  opacity:0;pointer-events:none;
-  transition:opacity 3s ease;
-  white-space:nowrap;
-}
-#s3-hint.in{opacity:1}
-
 /* ── wrong message ── */
 .wrong{
   position:fixed;
@@ -151,6 +137,16 @@ html,body{
   font-weight:300;letter-spacing:0.1em;
   color:rgba(230,224,212,0.38);
 }
+.s3-caption-hint{
+  margin-top:14px;
+  font-style:italic;
+  font-size:clamp(13px,1.8vw,16px);
+  font-weight:300;letter-spacing:0.1em;
+  color:rgba(230,224,212,0.38);
+  opacity:0;
+  transition:opacity 2s ease;
+}
+.s3-caption-hint.in{opacity:1}
 
 /* ── stage 3 subtext ── */
 .subtext{
@@ -238,7 +234,6 @@ html,body{
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
   #s1-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
-  #s3-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
   .wrong{bottom:max(16vh,80px)}
 }
 
@@ -269,7 +264,6 @@ html,body{
   </div>
 </div>
 <div id="s1-hint">where are you returning to?</div>
-<div id="s3-hint">one word</div>
 <div class="wrong" id="s1w">Not yet.</div>
 
 <!-- Stage 2 -->
@@ -307,7 +301,8 @@ html,body{
     <form id="s3form" onsubmit="return false" style="margin:0">
       <input class="s-input" id="s3in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </form>
-    <p class="s3-caption">come home to yourself</p>
+    <p class="s3-caption">Where are you returning to?</p>
+    <p class="s3-caption-hint" id="s3-hint-inline">Return home to yourself.</p>
   </div>
 </div>
 
@@ -444,7 +439,7 @@ async function stage3() {
   const input = $('s3in');
   if (window.innerWidth > 680) input.focus();
 
-  const s3hint = $('s3-hint');
+  const s3hintInline = $('s3-hint-inline');
 
   let s3tries = 0;
   async function s3submit() {
@@ -456,13 +451,12 @@ async function stage3() {
       raw.includes('ready') || raw.includes('yes') || raw.includes('i am')
     );
     if (isHome || isFallback) {
-      unreval(s3hint);
       input.blur();
       await particleFade();
     } else {
       s3tries++;
       input.value = '';
-      if (s3tries >= 2) reveal(s3hint);
+      if (s3tries >= 2) reveal(s3hintInline);
     }
   }
   $('s3form').addEventListener('submit', s3submit);
