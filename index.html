@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sacred Journeys</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#080705;
+  --text:#E6E0D4;
+  --muted:rgba(230,224,212,0.38);
+  --whisper:rgba(230,224,212,0.1);
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+
+html,body{
+  width:100%;height:100%;
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--serif);
+  overflow:hidden;
+}
+
+/* ── stages ── */
+.stage{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 28px;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.6s ease;
+  text-align:center;
+}
+.stage.active{opacity:1;pointer-events:auto}
+
+/* ── phrase ── */
+.phrase{
+  font-size:clamp(26px,4.8vw,54px);
+  font-weight:300;letter-spacing:0.03em;
+  line-height:1.2;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 3.6s ease, transform 3.6s ease;
+}
+.phrase.in{opacity:1;transform:none}
+
+/* ── stage input ── */
+.input-wrap{
+  margin-top:56px;
+  opacity:0;
+  transition:opacity 1.8s ease;
+}
+.input-wrap.in{opacity:1}
+
+.s-input{
+  background:transparent;
+  border:none;
+  border-bottom:0.5px solid rgba(230,224,212,0.18);
+  color:var(--text);
+  font-family:var(--serif);
+  font-size:clamp(18px,3vw,22px);
+  font-weight:300;
+  letter-spacing:0.08em;
+  text-align:center;
+  width:min(220px,60vw);
+  padding:8px 0 10px;
+  outline:none;
+  caret-color:rgba(230,224,212,0.6);
+}
+
+/* ── hint ── */
+#s1-hint{
+  position:fixed;
+  bottom:max(14vh,80px);
+  left:50%;transform:translateX(-50%);
+  font-style:italic;
+  font-size:clamp(11px,1.6vw,13px);
+  letter-spacing:0.1em;
+  color:var(--whisper);
+  opacity:0;pointer-events:none;
+  transition:opacity 3s ease;
+  white-space:nowrap;
+}
+#s1-hint.in{opacity:1}
+
+/* ── wrong message ── */
+.wrong{
+  position:fixed;
+  bottom:max(22vh,100px);
+  left:50%;transform:translateX(-50%);
+  font-size:clamp(10px,1.5vw,12px);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(230,224,212,0.28);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.7s ease;
+  white-space:nowrap;
+}
+.wrong.in{opacity:1}
+
+/* ── stage 2 shapes ── */
+#s2-shapes{
+  display:flex;gap:clamp(28px,7vw,80px);
+  margin-top:60px;align-items:center;
+  opacity:0;transition:opacity 1.8s ease;
+}
+#s2-shapes.in{opacity:1}
+
+.shape-btn{
+  background:none;border:none;cursor:pointer;padding:14px;
+  opacity:0.42;
+  transition:opacity 0.35s ease, transform 0.35s ease;
+  animation:shpulse 5s ease-in-out infinite;
+}
+.shape-btn:nth-child(2){animation-delay:1.6s}
+.shape-btn:nth-child(3){animation-delay:3.2s}
+
+@keyframes shpulse{
+  0%,100%{opacity:0.38;transform:scale(1)}
+  50%{opacity:0.58;transform:scale(1.05)}
+}
+.shape-btn:hover{opacity:0.8;animation:none}
+
+.shape-btn svg{
+  width:clamp(44px,7vw,66px);
+  height:clamp(44px,7vw,66px);
+  stroke:var(--text);fill:none;stroke-width:0.9;
+}
+
+/* ── stage 3 subtext ── */
+.subtext{
+  font-size:clamp(13px,2vw,16px);
+  font-weight:300;letter-spacing:0.14em;
+  color:rgba(230,224,212,0.42);
+  margin-top:22px;
+  opacity:0;transition:opacity 1.8s ease;
+}
+.subtext.in{opacity:1}
+
+/* ── particle canvas ── */
+#pcv{
+  position:fixed;inset:0;z-index:80;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.4s ease;
+}
+#pcv.in{opacity:1}
+
+/* ── transition overlay ── */
+#tov{
+  position:fixed;inset:0;z-index:60;
+  background:var(--ink);
+  opacity:0;pointer-events:none;
+  transition:opacity 1s ease;
+}
+#tov.in{opacity:1;pointer-events:auto}
+
+/* ── final arrival ── */
+#final{
+  background:radial-gradient(ellipse at 55% 45%,#1C0F07 0%,#0D0804 55%,#080604 100%);
+}
+
+.final-in{
+  position:relative;z-index:2;
+  max-width:500px;width:100%;
+  padding:0 28px;
+}
+
+.f-label{
+  font-size:clamp(10px,1.4vw,12px);
+  letter-spacing:0.32em;text-transform:uppercase;
+  color:rgba(210,185,150,0.38);
+  margin-bottom:44px;
+  opacity:0;transition:opacity 2.2s ease 0.4s;
+}
+.f-label.in{opacity:1}
+
+.f-body{
+  font-size:clamp(17px,2.6vw,24px);
+  font-weight:300;line-height:1.82;
+  color:rgba(220,205,180,0.84);
+  margin-bottom:56px;
+  opacity:0;transition:opacity 2.2s ease 1.6s;
+}
+.f-body.in{opacity:1}
+
+.f-cta{
+  display:inline-block;
+  font-size:clamp(9px,1.3vw,11px);
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(220,205,180,0.88);
+  text-decoration:none;
+  border-bottom:0.5px solid rgba(220,205,180,0.22);
+  padding-bottom:8px;
+  opacity:0;
+  transition:opacity 2.2s ease 3s, border-color 0.3s, color 0.3s;
+}
+.f-cta.in{opacity:1}
+.f-cta:hover{border-color:rgba(220,205,180,0.55);color:rgba(220,205,180,1)}
+
+.f-ig{
+  display:block;margin-top:28px;
+  font-style:italic;
+  font-size:clamp(10px,1.4vw,12px);
+  letter-spacing:0.14em;
+  color:rgba(220,205,180,0.2);
+  text-decoration:none;
+  opacity:0;transition:opacity 2.2s ease 3.8s, color 0.3s;
+}
+.f-ig.in{opacity:1}
+.f-ig:hover{color:rgba(220,205,180,0.45)}
+
+/* ── mobile ── */
+@media(max-width:480px){
+  .stage{justify-content:flex-start;padding-top:max(28vh,110px)}
+  #s1-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
+  .wrong{bottom:max(16vh,80px)}
+}
+</style>
+</head>
+<body>
+
+<!-- Stage 1 -->
+<div class="stage" id="s1">
+  <p class="phrase" id="s1p">You are the medicine.</p>
+  <div class="input-wrap" id="s1iw">
+    <input class="s-input" id="s1in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  </div>
+</div>
+<div id="s1-hint">where are you returning to?</div>
+<div class="wrong" id="s1w">Not yet.</div>
+
+<!-- Stage 2 -->
+<div class="stage" id="s2">
+  <p class="phrase" id="s2p">From force to flow.</p>
+  <div id="s2-shapes">
+    <!-- Angular (wrong) -->
+    <button class="shape-btn" data-s="x" aria-label="first shape">
+      <svg viewBox="0 0 60 60">
+        <path d="M30 4 L38 22 L58 24 L44 38 L48 58 L30 48 L12 58 L16 38 L2 24 L22 22 Z"/>
+      </svg>
+    </button>
+    <!-- Flowing curved (correct) -->
+    <button class="shape-btn" data-s="flow" aria-label="second shape">
+      <svg viewBox="0 0 60 60">
+        <path d="M30 6 C40 10, 52 22, 50 34 C48 46, 40 56, 30 56 C20 56, 12 46, 12 34 C12 22, 18 8, 30 6 Z"/>
+        <path d="M30 18 C35 20, 40 26, 38 34 C36 40, 32 44, 28 40 C24 36, 26 26, 30 18 Z" stroke-width="0.6" opacity="0.5"/>
+      </svg>
+    </button>
+    <!-- Circle (wrong) -->
+    <button class="shape-btn" data-s="x" aria-label="third shape">
+      <svg viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="24"/>
+      </svg>
+    </button>
+  </div>
+  <div class="wrong" id="s2w">Feel it, don't think it.</div>
+</div>
+
+<!-- Stage 3 -->
+<div class="stage" id="s3">
+  <p class="phrase" id="s3p">Surrender over force.</p>
+  <p class="subtext" id="s3sub">If you are ready, say so.</p>
+  <div class="input-wrap" id="s3iw">
+    <input class="s-input" id="s3in" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  </div>
+</div>
+
+<!-- Particle canvas -->
+<canvas id="pcv"></canvas>
+
+<!-- Transition overlay -->
+<div id="tov"></div>
+
+<!-- Final Arrival -->
+<div class="stage" id="final">
+  <div class="final-in">
+    <div class="f-label" id="fl">Sacred Journeys</div>
+    <p class="f-body" id="fb">
+      Puerto Escondido, Mexico.<br>
+      November 2026.<br><br>
+      This is not a retreat.<br>
+      This is an initiation into your next chapter.<br><br>
+      10–15 people.<br><br>
+      If you feel the pull, that is enough.<br>
+      Send a message and we will talk.
+    </p>
+    <a href="mailto:hello@sacredjourneysretreats.com" class="f-cta" id="fc">Send a message</a>
+    <a href="https://instagram.com/sacredjourneys.co" class="f-ig" id="fig" target="_blank" rel="noopener">@sacredjourneys.co</a>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const reveal = el => el.classList.add('in');
+const unreval = el => el.classList.remove('in');
+
+// ── Stage transitions ─────────────────────────────────────────────────────────
+async function crossfade(nextId, ms = 1600) {
+  const ov = $('tov');
+  reveal(ov);
+  await wait(ms);
+  document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+  const next = $(nextId);
+  next.classList.add('active');
+  await wait(120);
+  unreval(ov);
+}
+
+// ── Stage 1 ───────────────────────────────────────────────────────────────────
+async function stage1() {
+  const stage = $('s1');
+  stage.classList.add('active');
+  await wait(500);
+  reveal($('s1p'));
+  await wait(4000);
+  reveal($('s1iw'));
+
+  const input = $('s1in');
+  if (window.innerWidth > 680) input.focus();
+
+  let hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
+
+  input.addEventListener('input', () => {
+    clearTimeout(hintTimer);
+    unreval($('s1-hint'));
+    hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
+  });
+
+  input.addEventListener('keydown', async e => {
+    if (e.key !== 'Enter') return;
+    const val = input.value.trim().toLowerCase();
+    clearTimeout(hintTimer);
+    unreval($('s1-hint'));
+
+    if (val === 'home') {
+      input.blur();
+      await crossfade('s2');
+      stage2();
+    } else {
+      const w = $('s1w');
+      reveal(w);
+      input.value = '';
+      await wait(2400);
+      unreval(w);
+      if (window.innerWidth > 680) input.focus();
+      hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
+    }
+  });
+}
+
+// ── Stage 2 ───────────────────────────────────────────────────────────────────
+async function stage2() {
+  await wait(500);
+  reveal($('s2p'));
+  await wait(3400);
+  reveal($('s2-shapes'));
+
+  let busy = false;
+  document.querySelectorAll('.shape-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if (busy) return;
+      busy = true;
+
+      if (btn.dataset.s === 'flow') {
+        await crossfade('s3');
+        stage3();
+      } else {
+        const w = $('s2w');
+        const shapes = $('s2-shapes');
+        reveal(w);
+        shapes.style.opacity = '0.25';
+        shapes.style.transition = 'opacity 0.5s ease';
+        await wait(2200);
+        unreval(w);
+        shapes.style.opacity = '';
+        await wait(600);
+        shapes.style.transition = '';
+        busy = false;
+      }
+    });
+  });
+}
+
+// ── Stage 3 ───────────────────────────────────────────────────────────────────
+async function stage3() {
+  await wait(500);
+  reveal($('s3p'));
+  await wait(3200);
+  reveal($('s3sub'));
+  await wait(1400);
+  reveal($('s3iw'));
+
+  const input = $('s3in');
+  if (window.innerWidth > 680) input.focus();
+
+  input.addEventListener('keydown', async e => {
+    if (e.key !== 'Enter') return;
+    const raw = input.value.trim().toLowerCase().replace(/['']/g, "'");
+    const ready =
+      raw === 'yes' || raw === 'ready' || raw === 'i am' ||
+      raw.includes('ready') || raw.includes('i am') ||
+      raw.startsWith('yes') || raw === 'i do';
+
+    if (ready) {
+      input.blur();
+      await particleFade();
+    }
+  });
+}
+
+// ── Particle fade ─────────────────────────────────────────────────────────────
+async function particleFade() {
+  const cv = $('pcv');
+  const ctx = cv.getContext('2d');
+  cv.width = window.innerWidth;
+  cv.height = window.innerHeight;
+  reveal(cv);
+
+  const N = 160;
+  const pts = Array.from({length: N}, () => ({
+    x: Math.random() * cv.width,
+    y: Math.random() * cv.height,
+    r: Math.random() * 1.4 + 0.2,
+    vx: (Math.random() - 0.5) * 0.35,
+    vy: (Math.random() - 0.5) * 0.35,
+    a: Math.random() * 0.55 + 0.1,
+  }));
+
+  const dur = 4800;
+  let t0 = null;
+
+  await new Promise(resolve => {
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      const p = Math.min((ts - t0) / dur, 1);
+
+      ctx.clearRect(0, 0, cv.width, cv.height);
+
+      // Warm ink fill that builds up
+      ctx.fillStyle = `rgba(12,7,4,${p * 0.96})`;
+      ctx.fillRect(0, 0, cv.width, cv.height);
+
+      // Particles bloom then fade
+      const bloom = p < 0.45 ? p / 0.45 : 1 - (p - 0.45) / 0.55;
+      pts.forEach(pt => {
+        pt.x += pt.vx; pt.y += pt.vy;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(195,145,75,${pt.a * bloom * 0.65})`;
+        ctx.fill();
+      });
+
+      if (p < 1) requestAnimationFrame(frame);
+      else resolve();
+    }
+    requestAnimationFrame(frame);
+  });
+
+  unreval(cv);
+  document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+  const fin = $('final');
+  fin.classList.add('active');
+  await wait(300);
+  finalArrive();
+}
+
+// ── Final arrival ─────────────────────────────────────────────────────────────
+async function finalArrive() {
+  await wait(200);
+  reveal($('fl'));
+  await wait(600);
+  reveal($('fb'));
+  await wait(600);
+  reveal($('fc'));
+  await wait(500);
+  reveal($('fig'));
+}
+
+// ── Go ────────────────────────────────────────────────────────────────────────
+stage1();
+</script>
+</body>
+</html>
