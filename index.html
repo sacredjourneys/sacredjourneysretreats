@@ -85,6 +85,20 @@ html,body{
 }
 #s1-hint.in{opacity:1}
 
+#s3-hint{
+  position:fixed;
+  bottom:max(14vh,80px);
+  left:50%;transform:translateX(-50%);
+  font-style:italic;
+  font-size:clamp(13px,1.8vw,16px);
+  letter-spacing:0.1em;
+  color:rgba(230,224,212,0.42);
+  opacity:0;pointer-events:none;
+  transition:opacity 3s ease;
+  white-space:nowrap;
+}
+#s3-hint.in{opacity:1}
+
 /* ── wrong message ── */
 .wrong{
   position:fixed;
@@ -217,6 +231,20 @@ html,body{
   #s1-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
   .wrong{bottom:max(16vh,80px)}
 }
+
+/* ── mute toggle ── */
+#muteBtn{
+  position:fixed;bottom:24px;right:24px;
+  background:none;border:none;cursor:pointer;
+  font-family:var(--serif);font-size:11px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(230,224,212,0.22);
+  opacity:0;pointer-events:none;
+  transition:opacity 1.8s ease, color 0.25s;
+  z-index:300;padding:8px;
+}
+#muteBtn.in{opacity:1;pointer-events:auto}
+#muteBtn:hover{color:rgba(230,224,212,0.5)}
 </style>
 </head>
 <body>
@@ -231,6 +259,7 @@ html,body{
   </div>
 </div>
 <div id="s1-hint">where are you returning to?</div>
+<div id="s3-hint">the word that calls you home</div>
 <div class="wrong" id="s1w">Not yet.</div>
 
 <!-- Stage 2 -->
@@ -295,6 +324,9 @@ html,body{
   </div>
 </div>
 
+<audio id="amb" src="music.mp3" loop preload="none"></audio>
+<button id="muteBtn" aria-label="Toggle music">&#9834; mute</button>
+
 <script>
 const $ = id => document.getElementById(id);
 const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -339,6 +371,7 @@ async function stage1() {
     unreval($('s1-hint'));
     if (val === 'i am' || val === 'i am.' || val === 'iam') {
       input.blur();
+      startMusic();
       await crossfade('s2');
       stage2();
     } else {
@@ -400,10 +433,15 @@ async function stage3() {
   const input = $('s3in');
   if (window.innerWidth > 680) input.focus();
 
+  const s3hint = $('s3-hint');
+  let s3hintTimer = setTimeout(() => reveal(s3hint), 18000);
+
   let s3tries = 0;
   async function s3submit() {
     const raw = input.value.trim().toLowerCase().replace(/['']/g, "'");
     if (!raw) return;
+    clearTimeout(s3hintTimer);
+    unreval(s3hint);
     const isHome = raw === 'home';
     const isFallback = s3tries >= 4 && (
       raw === 'yes' || raw === 'i am' || raw === 'i do' ||
@@ -415,6 +453,7 @@ async function stage3() {
     } else {
       s3tries++;
       input.value = '';
+      s3hintTimer = setTimeout(() => reveal(s3hint), 18000);
     }
   }
   $('s3form').addEventListener('submit', s3submit);
@@ -490,6 +529,37 @@ async function finalArrive() {
 }
 
 // ── Go ────────────────────────────────────────────────────────────────────────
+
+// ── Music ─────────────────────────────────────────────────────────────────────
+const audio = $('amb');
+const muteBtn = $('muteBtn');
+let musicStarted = false;
+
+function startMusic() {
+  if (musicStarted) return;
+  musicStarted = true;
+  audio.volume = 0;
+  audio.play().then(() => {
+    reveal(muteBtn);
+    let vol = 0;
+    const fader = setInterval(() => {
+      vol = Math.min(vol + 0.012, 0.55);
+      audio.volume = vol;
+      if (vol >= 0.55) clearInterval(fader);
+    }, 80);
+  }).catch(() => {});
+}
+
+muteBtn.addEventListener('click', () => {
+  if (audio.muted) {
+    audio.muted = false;
+    muteBtn.innerHTML = '&#9834; mute';
+  } else {
+    audio.muted = true;
+    muteBtn.innerHTML = '&#9834; unmute';
+  }
+});
+
 stage1();
 </script>
 </body>
