@@ -227,8 +227,9 @@ html,body{
 
 /* ── mobile ── */
 @media(max-width:480px){
-  .stage{justify-content:flex-start;padding-top:max(28vh,110px)}
+  .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
   #s1-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
+  #s3-hint{bottom:max(8vh,60px);white-space:normal;text-align:center;width:80%;transform:translateX(-50%)}
   .wrong{bottom:max(16vh,80px)}
 }
 
@@ -434,26 +435,26 @@ async function stage3() {
   if (window.innerWidth > 680) input.focus();
 
   const s3hint = $('s3-hint');
-  let s3hintTimer = setTimeout(() => reveal(s3hint), 18000);
+  let s3hintTimer = setTimeout(() => reveal(s3hint), 10000);
 
   let s3tries = 0;
   async function s3submit() {
     const raw = input.value.trim().toLowerCase().replace(/['']/g, "'");
     if (!raw) return;
     clearTimeout(s3hintTimer);
-    unreval(s3hint);
     const isHome = raw === 'home';
     const isFallback = s3tries >= 4 && (
       raw === 'yes' || raw === 'i am' || raw === 'i do' ||
       raw.includes('ready') || raw.includes('yes') || raw.includes('i am')
     );
     if (isHome || isFallback) {
+      unreval(s3hint);
       input.blur();
       await particleFade();
     } else {
       s3tries++;
       input.value = '';
-      s3hintTimer = setTimeout(() => reveal(s3hint), 18000);
+      reveal(s3hint);
     }
   }
   $('s3form').addEventListener('submit', s3submit);
