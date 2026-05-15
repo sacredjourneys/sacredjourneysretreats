@@ -463,7 +463,7 @@ async function stage3() {
 async function stageBridge() {
   await wait(300);
   reveal($('sbp'));
-  await wait(4000);
+  await wait(2000);
   await particleFade();
 }
 
@@ -475,14 +475,16 @@ async function particleFade() {
   cv.height = window.innerHeight;
   reveal(cv);
 
-  const N = 160;
+  const scale = Math.sqrt(cv.width * cv.height / (375 * 812));
+  const N = Math.round(160 * scale);
+  const maxR = 1.4 * Math.max(1, scale * 0.7);
   const pts = Array.from({length: N}, () => ({
     x: Math.random() * cv.width,
     y: Math.random() * cv.height,
-    r: Math.random() * 1.4 + 0.2,
+    r: Math.random() * maxR + 0.3,
     vx: (Math.random() - 0.5) * 0.35,
     vy: (Math.random() - 0.5) * 0.35,
-    a: Math.random() * 0.55 + 0.1,
+    a: Math.random() * 0.65 + 0.15,
   }));
 
   const dur = 4800;
@@ -505,7 +507,7 @@ async function particleFade() {
         pt.x += pt.vx; pt.y += pt.vy;
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(195,145,75,${pt.a * bloom * 0.65})`;
+        ctx.fillStyle = `rgba(195,145,75,${pt.a * bloom * 0.82})`;
         ctx.fill();
       });
 
@@ -515,11 +517,14 @@ async function particleFade() {
     requestAnimationFrame(frame);
   });
 
-  unreval(cv);
   document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
   const fin = $('final');
+  fin.style.transition = 'none';
   fin.classList.add('active');
-  await wait(300);
+  await wait(30);
+  fin.style.transition = '';
+  unreval(cv);
+  await wait(450);
   finalArrive();
 }
 
