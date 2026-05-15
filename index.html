@@ -76,20 +76,14 @@ html,body{
   color:rgba(230,224,212,0.22);
 }
 
-/* ── hint ── */
-#s1-hint{
-  position:fixed;
-  bottom:max(14vh,80px);
-  left:50%;transform:translateX(-50%);
+/* ── stage 1 nudge ── */
+.s1-nudge{
   font-style:italic;
-  font-size:clamp(13px,1.8vw,16px);
-  letter-spacing:0.1em;
-  color:rgba(230,224,212,0.42);
-  opacity:0;pointer-events:none;
-  transition:opacity 3s ease;
-  white-space:nowrap;
+  font-size:clamp(12px,1.6vw,14px);
+  letter-spacing:0.14em;
+  color:rgba(230,224,212,0.28);
+  margin-bottom:18px;
 }
-#s1-hint.in{opacity:1}
 
 /* ── wrong message ── */
 .wrong{
@@ -264,12 +258,12 @@ html,body{
 <div class="stage" id="s1">
   <p class="phrase" id="s1p">You are the medicine.</p>
   <div class="input-wrap" id="s1iw">
+    <p class="s1-nudge">who are you?</p>
     <form id="s1form" onsubmit="return false" style="margin:0">
-      <input class="s-input" id="s1in" type="text" placeholder="finish the thought" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input class="s-input" id="s1in" type="text" placeholder="type it." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </form>
   </div>
 </div>
-<div id="s1-hint">where are you returning to?</div>
 <div class="wrong" id="s1w">Not yet.</div>
 
 <!-- Stage 2 -->
@@ -369,19 +363,12 @@ async function stage1() {
   const input = $('s1in');
   if (window.innerWidth > 680) input.focus();
 
-  let hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
-
-  input.addEventListener('input', () => {
-    clearTimeout(hintTimer);
-    unreval($('s1-hint'));
-    hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
-  });
-
   async function s1submit() {
     const val = input.value.trim().toLowerCase().replace(/['']/g, "'");
-    clearTimeout(hintTimer);
-    unreval($('s1-hint'));
-    if (val === 'i am' || val === 'i am.' || val === 'iam') {
+    if (val === 'i am' || val === 'i am.' || val === 'iam' ||
+        val === 'i am the medicine' || val === 'i am the medicine.' ||
+        val === 'the medicine' || val === 'medicine' ||
+        val === 'yes' || val === 'yes.' || val === 'i know') {
       input.blur();
       startMusic();
       await crossfade('s2');
@@ -393,7 +380,6 @@ async function stage1() {
       await wait(2400);
       unreval(w);
       if (window.innerWidth > 680) input.focus();
-      hintTimer = setTimeout(() => reveal($('s1-hint')), 20000);
     }
   }
   $('s1form').addEventListener('submit', s1submit);
@@ -443,9 +429,9 @@ async function stage3() {
   reveal($('s3iw'));
 
   const input = $('s3in');
-  if (window.innerWidth > 680) input.focus();
-
   const s3hintInline = $('s3-hint-inline');
+  setTimeout(() => reveal(s3hintInline), 3500);
+  if (window.innerWidth > 680) input.focus();
 
   let s3tries = 0;
   async function s3submit() {
@@ -462,7 +448,6 @@ async function stage3() {
     } else {
       s3tries++;
       input.value = '';
-      if (s3tries >= 2) reveal(s3hintInline);
     }
   }
   $('s3form').addEventListener('submit', s3submit);
