@@ -233,7 +233,7 @@ html,body{
 /* ── mobile ── */
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
-  .wrong{bottom:max(44vh,240px)}
+  .wrong{bottom:max(40vh,210px)}
 }
 
 /* ── mute toggle ── */
@@ -463,7 +463,7 @@ async function stage3() {
 async function stageBridge() {
   await wait(300);
   reveal($('sbp'));
-  await wait(4500);
+  await wait(4000);
   await particleFade();
 }
 
