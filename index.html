@@ -233,7 +233,7 @@ html,body{
 /* ── mobile ── */
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
-  .wrong{bottom:max(52vh,280px)}
+  .wrong{bottom:max(44vh,240px)}
 }
 
 /* ── mute toggle ── */
@@ -303,6 +303,11 @@ html,body{
     <p class="s3-caption">Where are you returning to?</p>
     <p class="s3-caption-hint" id="s3-hint-inline">Return home to yourself.</p>
   </div>
+</div>
+
+<!-- Bridge -->
+<div class="stage" id="sbridge">
+  <p class="phrase" id="sbp">Returning home to yourself.</p>
 </div>
 
 <!-- Particle canvas -->
@@ -443,7 +448,8 @@ async function stage3() {
     );
     if (isHome || isFallback) {
       input.blur();
-      await particleFade();
+      await crossfade('sbridge');
+      await stageBridge();
     } else {
       s3tries++;
       input.value = '';
@@ -451,6 +457,14 @@ async function stage3() {
   }
   $('s3form').addEventListener('submit', s3submit);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); s3submit(); } });
+}
+
+// ── Bridge ────────────────────────────────────────────────────────────────────
+async function stageBridge() {
+  await wait(300);
+  reveal($('sbp'));
+  await wait(4500);
+  await particleFade();
 }
 
 // ── Particle fade ─────────────────────────────────────────────────────────────
