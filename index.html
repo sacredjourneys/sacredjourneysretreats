@@ -252,6 +252,7 @@ html,body{
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
   .wrong{bottom:max(40vh,210px)}
+  #s1-hint1{margin-top:56px}
 }
 
 /* ── mute toggle ── */
@@ -398,8 +399,7 @@ async function stage1() {
         val === 'spirit' || val === 'a spirit' ||
         val === 'energy' || val === 'enough' ||
         val === 'god' || val === 'source' ||
-        val === 'consciousness' || val === 'divine' ||
-        val === 'yes' || val === 'yes.' || val === 'i know') {
+        val === 'consciousness' || val === 'divine') {
       input.blur();
       startMusic();
       await crossfade('s2');
