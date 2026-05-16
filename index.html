@@ -85,6 +85,18 @@ html,body{
   margin-bottom:18px;
 }
 
+/* ── stage 1 persistent hint ── */
+.s1-hint{
+  margin-top:20px;
+  font-style:italic;
+  font-size:clamp(11px,1.4vw,13px);
+  letter-spacing:0.16em;
+  color:rgba(230,224,212,0.28);
+  opacity:0;
+  transition:opacity 1.8s ease;
+}
+.s1-hint.in{opacity:1}
+
 /* ── wrong message ── */
 .wrong{
   position:fixed;
@@ -261,9 +273,10 @@ html,body{
     <form id="s1form" onsubmit="return false" style="margin:0">
       <input class="s-input" id="s1in" type="text" placeholder="type it." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </form>
+    <p class="s1-hint" id="s1-hint">not your name.</p>
   </div>
 </div>
-<div class="wrong" id="s1w">Not yet.</div>
+<div class="wrong" id="s1w">Not yet, try again.</div>
 
 <!-- Stage 2 -->
 <div class="stage" id="s2">
@@ -367,19 +380,24 @@ async function stage1() {
   const input = $('s1in');
   if (window.innerWidth > 680) input.focus();
 
+  let s1tries = 0;
   async function s1submit() {
     const val = input.value.trim().toLowerCase().replace(/['']/g, "'");
     if (val === 'i am' || val === 'i am.' || val === 'iam' ||
         val === 'i am the medicine' || val === 'i am the medicine.' ||
         val === 'the medicine' || val === 'medicine' ||
+        val === 'love' || val === 'love.' ||
         val === 'yes' || val === 'yes.' || val === 'i know') {
       input.blur();
       startMusic();
       await crossfade('s2');
       stage2();
     } else {
+      s1tries++;
       const w = $('s1w');
+      w.textContent = s1tries >= 2 ? 'Not your name.' : 'Not yet, try again.';
       reveal(w);
+      if (s1tries >= 3) reveal($('s1-hint'));
       input.value = '';
       await wait(2400);
       unreval(w);
