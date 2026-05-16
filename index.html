@@ -133,18 +133,29 @@ html,body{
   animation:shpulse 5s ease-in-out infinite;
 }
 .shape-btn:nth-child(2){animation-delay:1.6s}
-.shape-btn:nth-child(3){animation-delay:3.2s}
 
 @keyframes shpulse{
   0%,100%{opacity:0.38;transform:scale(1)}
   50%{opacity:0.58;transform:scale(1.05)}
 }
+
+@keyframes breathe{
+  0%,100%{opacity:0.36;transform:scale(1)}
+  30%{opacity:0.54;transform:scale(1.07)}
+  65%{opacity:0.50;transform:scale(1.03)}
+}
+.shape-btn.flow-shape{animation:breathe 5.5s ease-in-out infinite}
 .shape-btn:hover{opacity:0.8;animation:none}
+.shape-btn.flow-shape:hover svg{
+  stroke:rgba(195,145,75,0.85);
+  filter:drop-shadow(0 0 12px rgba(195,145,75,0.28));
+}
 
 .shape-btn svg{
   width:clamp(44px,7vw,66px);
   height:clamp(44px,7vw,66px);
   stroke:var(--text);fill:none;stroke-width:0.9;
+  transition:stroke 0.4s ease, filter 0.4s ease;
 }
 
 /* ── stage 3 caption (always visible below input) ── */
@@ -290,23 +301,27 @@ html,body{
 <div class="stage" id="s2">
   <p class="phrase" id="s2p">From force to flow.</p>
   <div id="s2-shapes">
-    <!-- Angular (wrong) -->
+    <!-- Star (wrong) -->
     <button class="shape-btn" data-s="x" aria-label="first shape">
       <svg viewBox="0 0 60 60">
         <path d="M30 4 L38 22 L58 24 L44 38 L48 58 L30 48 L12 58 L16 38 L2 24 L22 22 Z"/>
       </svg>
     </button>
-    <!-- Flowing curved (correct) -->
-    <button class="shape-btn" data-s="flow" aria-label="second shape">
+    <!-- Key (wrong) -->
+    <button class="shape-btn" data-s="x" aria-label="second shape">
       <svg viewBox="0 0 60 60">
-        <path d="M30 6 C40 10, 52 22, 50 34 C48 46, 40 56, 30 56 C20 56, 12 46, 12 34 C12 22, 18 8, 30 6 Z"/>
-        <path d="M30 18 C35 20, 40 26, 38 34 C36 40, 32 44, 28 40 C24 36, 26 26, 30 18 Z" stroke-width="0.6" opacity="0.5"/>
+        <circle cx="17" cy="30" r="11"/>
+        <circle cx="17" cy="30" r="5" stroke-width="0.6" opacity="0.45"/>
+        <line x1="28" y1="30" x2="52" y2="30"/>
+        <line x1="40" y1="30" x2="40" y2="38"/>
+        <line x1="48" y1="30" x2="48" y2="35"/>
       </svg>
     </button>
-    <!-- Circle (wrong) -->
-    <button class="shape-btn" data-s="x" aria-label="third shape">
+    <!-- Flame (correct) -->
+    <button class="shape-btn flow-shape" data-s="flow" aria-label="third shape">
       <svg viewBox="0 0 60 60">
-        <circle cx="30" cy="30" r="24"/>
+        <path d="M30 56 C18 56 10 46 10 34 C10 18 22 10 27 4 C25 16 30 22 30 22 C30 22 36 14 38 4 C44 12 50 22 50 34 C50 46 42 56 30 56 Z"/>
+        <path d="M30 46 C25 46 22 42 22 36 C22 28 27 23 30 23 C33 29 36 35 34 41 C33 44 32 46 30 46 Z" stroke-width="0.6" opacity="0.4"/>
       </svg>
     </button>
   </div>
