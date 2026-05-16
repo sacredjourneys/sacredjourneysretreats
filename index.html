@@ -420,9 +420,8 @@ async function stage1() {
       stage2();
     } else {
       s1tries++;
-      if (s1tries === 1) $('s1p').classList.add('glow');
-      if (s1tries === 2) reveal($('s1-hint1'));
-      if (s1tries === 3) reveal($('s1-hint2'));
+      if (s1tries === 1) { $('s1p').classList.add('glow'); reveal($('s1-hint1')); }
+      if (s1tries === 2) reveal($('s1-hint2'));
       const w = $('s1w');
       reveal(w);
       input.value = '';
