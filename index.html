@@ -46,6 +46,12 @@ html,body{
 }
 .phrase.in{opacity:1;transform:none}
 
+@keyframes warmglow{
+  0%,100%{text-shadow:0 0 30px rgba(195,145,75,0.1)}
+  50%{text-shadow:0 0 60px rgba(195,145,75,0.26),0 0 120px rgba(195,145,75,0.07)}
+}
+.phrase.glow{animation:warmglow 3.5s ease-in-out infinite}
+
 /* ── stage input ── */
 .input-wrap{
   margin-top:56px;
@@ -85,15 +91,15 @@ html,body{
   margin-bottom:18px;
 }
 
-/* ── stage 1 persistent hint ── */
+/* ── stage 1 layered hints ── */
 .s1-hint{
-  margin-top:20px;
+  margin-top:18px;
   font-style:italic;
-  font-size:clamp(11px,1.4vw,13px);
-  letter-spacing:0.16em;
-  color:rgba(230,224,212,0.28);
+  font-size:clamp(12px,1.6vw,14px);
+  letter-spacing:0.14em;
+  color:rgba(230,224,212,0.34);
   opacity:0;
-  transition:opacity 1.8s ease;
+  transition:opacity 2s ease;
 }
 .s1-hint.in{opacity:1}
 
@@ -246,13 +252,6 @@ html,body{
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
   .wrong{bottom:max(40vh,210px)}
-  .s1-hint{
-    position:fixed;
-    bottom:max(calc(40vh - 46px),162px);
-    left:50%;transform:translateX(-50%);
-    white-space:nowrap;
-    margin-top:0;
-  }
 }
 
 /* ── mute toggle ── */
@@ -280,7 +279,8 @@ html,body{
     <form id="s1form" onsubmit="return false" style="margin:0">
       <input class="s-input" id="s1in" type="text" placeholder="type it." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </form>
-    <p class="s1-hint" id="s1-hint">not your name.</p>
+    <p class="s1-hint" id="s1-hint1">Speak what you are, not your name.</p>
+    <p class="s1-hint" id="s1-hint2">The answer is already here.</p>
   </div>
 </div>
 <div class="wrong" id="s1w">Not yet, try again.</div>
@@ -394,6 +394,11 @@ async function stage1() {
         val === 'i am the medicine' || val === 'i am the medicine.' ||
         val === 'the medicine' || val === 'medicine' ||
         val === 'love' || val === 'love.' ||
+        val === 'myself' || val === 'me' ||
+        val === 'spirit' || val === 'a spirit' ||
+        val === 'energy' || val === 'enough' ||
+        val === 'god' || val === 'source' ||
+        val === 'consciousness' || val === 'divine' ||
         val === 'yes' || val === 'yes.' || val === 'i know') {
       input.blur();
       startMusic();
@@ -401,10 +406,11 @@ async function stage1() {
       stage2();
     } else {
       s1tries++;
+      if (s1tries === 1) $('s1p').classList.add('glow');
+      if (s1tries === 2) reveal($('s1-hint1'));
+      if (s1tries === 3) reveal($('s1-hint2'));
       const w = $('s1w');
-      w.textContent = s1tries === 2 ? 'Not your name.' : 'Not yet, try again.';
       reveal(w);
-      if (s1tries >= 3) reveal($('s1-hint'));
       input.value = '';
       await wait(2400);
       unreval(w);
