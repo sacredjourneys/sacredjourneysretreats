@@ -294,8 +294,8 @@ html,body{
     <p class="s1-hint" id="s1-hint1">Speak what you are, not your name.</p>
     <p class="s1-hint" id="s1-hint2">The answer is already here.</p>
   </div>
+  <div class="wrong" id="s1w">Not yet, try again.</div>
 </div>
-<div class="wrong" id="s1w">Not yet, try again.</div>
 
 <!-- Stage 2 -->
 <div class="stage" id="s2">
@@ -380,14 +380,21 @@ const reveal = el => el.classList.add('in');
 const unreval = el => el.classList.remove('in');
 
 // ── Keyboard lift (mobile) ────────────────────────────────────────────────────
-// iOS doesn't reliably shift fixed content when the keyboard opens.
-// We use visualViewport to detect keyboard height and nudge the stage up.
+// iOS/WebViews don't reliably shift fixed content when the keyboard opens.
+// We nudge the stage up slightly — capped at 55px and with a sanity check on
+// the reported keyboard height so Instagram's in-app browser can't over-fire.
 function attachKeyboardLift(el) {
   if (window.innerWidth > 680 || !window.visualViewport) return () => {};
   function onResize() {
     const kb = window.innerHeight - window.visualViewport.height;
-    el.style.transition = 'transform 0.25s ease';
-    el.style.transform = kb > 120 ? `translateY(-${Math.round(kb * 0.45)}px)` : '';
+    if (kb > 130 && kb < window.innerHeight * 0.55) {
+      const shift = Math.min(Math.round(kb * 0.18), 55);
+      el.style.transition = 'transform 0.25s ease';
+      el.style.transform = `translateY(-${shift}px)`;
+    } else if (kb < 80) {
+      el.style.transition = 'transform 0.25s ease';
+      el.style.transform = '';
+    }
   }
   window.visualViewport.addEventListener('resize', onResize);
   return function() {
