@@ -246,6 +246,13 @@ html,body{
 @media(max-width:480px){
   .stage:not(#final){justify-content:flex-start;padding-top:max(28vh,110px)}
   .wrong{bottom:max(40vh,210px)}
+  .s1-hint{
+    position:fixed;
+    bottom:max(18vh,70px);
+    left:50%;transform:translateX(-50%);
+    white-space:nowrap;
+    margin-top:0;
+  }
 }
 
 /* ── mute toggle ── */
@@ -395,7 +402,7 @@ async function stage1() {
     } else {
       s1tries++;
       const w = $('s1w');
-      w.textContent = s1tries >= 2 ? 'Not your name.' : 'Not yet, try again.';
+      w.textContent = s1tries === 2 ? 'Not your name.' : 'Not yet, try again.';
       reveal(w);
       if (s1tries >= 3) reveal($('s1-hint'));
       input.value = '';
