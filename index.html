@@ -379,6 +379,24 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const reveal = el => el.classList.add('in');
 const unreval = el => el.classList.remove('in');
 
+// ── Keyboard lift (mobile) ────────────────────────────────────────────────────
+// iOS doesn't reliably shift fixed content when the keyboard opens.
+// We use visualViewport to detect keyboard height and nudge the stage up.
+function attachKeyboardLift(el) {
+  if (window.innerWidth > 680 || !window.visualViewport) return () => {};
+  function onResize() {
+    const kb = window.innerHeight - window.visualViewport.height;
+    el.style.transition = 'transform 0.25s ease';
+    el.style.transform = kb > 120 ? `translateY(-${Math.round(kb * 0.45)}px)` : '';
+  }
+  window.visualViewport.addEventListener('resize', onResize);
+  return function() {
+    window.visualViewport.removeEventListener('resize', onResize);
+    el.style.transform = '';
+    el.style.transition = '';
+  };
+}
+
 // ── Stage transitions ─────────────────────────────────────────────────────────
 async function crossfade(nextId, ms = 1600) {
   const ov = $('tov');
@@ -402,6 +420,7 @@ async function stage1() {
 
   const input = $('s1in');
   if (window.innerWidth > 680) input.focus();
+  const detachKb1 = attachKeyboardLift($('s1'));
 
   let s1tries = 0;
   async function s1submit() {
@@ -414,6 +433,7 @@ async function stage1() {
         val === 'energy' || val === 'enough' ||
         val === 'god' || val === 'source' ||
         val === 'consciousness' || val === 'divine') {
+      detachKb1();
       input.blur();
       startMusic();
       await crossfade('s2');
@@ -480,6 +500,7 @@ async function stage3() {
   const s3hintInline = $('s3-hint-inline');
   setTimeout(() => reveal(s3hintInline), 10000);
   if (window.innerWidth > 680) input.focus();
+  const detachKb3 = attachKeyboardLift($('s3'));
 
   let s3tries = 0;
   async function s3submit() {
@@ -491,6 +512,7 @@ async function stage3() {
       raw.includes('ready') || raw.includes('yes') || raw.includes('i am')
     );
     if (isHome || isFallback) {
+      detachKb3();
       input.blur();
       await crossfade('sbridge');
       await stageBridge();
