@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Journeys — November 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F0E0C;
+  --off:#F5F3EE;
+  --warm:#FAFAF7;
+  --cream:#F0EDE6;
+  --mid:#8A8780;
+  --faint:#D4D2CE;
+  --dark:#1A1816;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--off);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.75;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:52px;background:rgba(15,14,12,0.97);backdrop-filter:blur(8px)}
+.nav-brand{font-family:var(--serif);font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:var(--off);text-decoration:none;font-weight:500}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#625f5c;text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--off)}
+.nav-back{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#555250;text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--off)}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:210}
+.nav-ham span{display:block;width:22px;height:1px;background:var(--off)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── UTILS ── */
+.s-label{display:block;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--mid);margin-bottom:18px}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-top:52px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,8,6,0.95) 0%,rgba(10,8,6,0.65) 35%,rgba(10,8,6,0.2) 70%,transparent 100%)}
+.hero-content{position:relative;z-index:2;padding:0 56px 96px;max-width:700px}
+.hero-eyebrow{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#555250;margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-size:clamp(52px,6vw,84px);font-weight:300;color:var(--off);line-height:1.02;margin-bottom:28px}
+.hero h1 em{font-style:italic;color:#7a7470}
+.hero-sub{font-size:15px;color:#7a7875;line-height:1.85;max-width:500px;margin-bottom:44px}
+.hero-facts{display:flex;gap:48px;padding-top:36px;border-top:0.5px solid #2c2a28}
+.hero-fact-label{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#444240;margin-bottom:6px}
+.hero-fact-val{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--off);line-height:1.1}
+
+/* ── OVERVIEW ── */
+.s-overview{background:#fff;padding:100px 56px}
+.s-overview-grid{display:grid;grid-template-columns:5fr 7fr;gap:96px;align-items:start}
+.s-overview h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.06;margin-top:8px}
+.s-overview h2 em{font-style:italic}
+.s-overview-right p{font-size:15px;line-height:1.92;color:#3c3a38;margin-bottom:22px}
+.s-overview-right p:last-child{margin-bottom:0}
+
+/* ── FULL BLEED IMAGE BREAK ── */
+.s-imgbreak{width:100%;height:60vh;overflow:hidden;display:block;line-height:0}
+.s-imgbreak img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.s-imgbreak.top{height:55vh}
+.s-imgbreak.top img{object-position:center 25%}
+
+/* ── INCLUDES ── */
+.s-includes{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
+.includes-grid{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--faint);margin-top:44px}
+.include-item{padding:36px 28px;border-right:0.5px solid var(--faint);border-bottom:0.5px solid var(--faint)}
+.include-item:nth-child(3n){border-right:none}
+.include-item:nth-last-child(-n+3){border-bottom:none}
+.include-icon{width:16px;height:16px;border-radius:50%;border:0.5px solid var(--mid);margin-bottom:14px;display:flex;align-items:center;justify-content:center}
+.include-title{font-family:var(--serif);font-size:17px;font-weight:400;margin-bottom:8px}
+.include-desc{font-size:13px;color:var(--mid);line-height:1.75}
+.includes-note{margin-top:32px;font-size:13px;color:var(--mid);padding-left:20px;border-left:1.5px solid var(--faint)}
+
+/* ── VENUE ── */
+.s-venue{background:var(--ink);color:var(--off);padding:100px 56px}
+.venue-grid{display:grid;grid-template-columns:6fr 5fr;gap:80px;align-items:start}
+.venue-left .s-label{color:#555250}
+.s-venue h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.06;margin:8px 0 28px}
+.s-venue h2 em{font-style:italic}
+.venue-desc{font-size:15px;color:#888583;line-height:1.9;margin-bottom:22px}
+.venue-amenities{display:grid;grid-template-columns:1fr 1fr;gap:0;border:0.5px solid #2c2a28;margin-top:40px}
+.venue-am{padding:18px 20px;border-right:0.5px solid #2c2a28;border-bottom:0.5px solid #2c2a28;font-size:13px;color:#625f5c}
+.venue-am:nth-child(2n){border-right:none}
+.venue-am:nth-last-child(-n+2){border-bottom:none}
+.venue-am span{color:#555250;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:3px}
+.venue-right{padding-left:40px;border-left:0.5px solid #2c2a28}
+.venue-pull{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-weight:300;font-style:italic;color:var(--off);line-height:1.45;margin-bottom:36px}
+.venue-details{display:flex;flex-direction:column}
+.venue-detail{display:flex;justify-content:space-between;padding:16px 0;border-bottom:0.5px solid #1a1816}
+.venue-detail:last-child{border-bottom:none}
+.venue-dl{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#444240}
+.venue-dv{font-family:var(--serif);font-size:16px;color:var(--off);text-align:right}
+
+/* ── VENUE PHOTO STRIP ── */
+.s-venue-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:var(--ink)}
+.venue-photo{overflow:hidden;aspect-ratio:3/4}
+.venue-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.venue-photo:hover img{transform:scale(1.03)}
+.venue-photo.wide{grid-column:span 2;aspect-ratio:16/9}
+
+/* ── ROOMS ── */
+.s-rooms{background:#fff;padding:100px 56px}
+.s-rooms h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 16px}
+.rooms-intro{font-size:15px;color:var(--mid);max-width:480px;line-height:1.88;margin-bottom:56px}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--faint)}
+.room-card{background:#fff;padding:44px 36px}
+.room-tag{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:16px}
+.room-name{font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:8px}
+.room-img{width:100%;aspect-ratio:4/3;overflow:hidden;margin-bottom:20px}
+.room-img img{width:100%;height:100%;object-fit:cover}
+.room-desc{font-size:13px;color:var(--mid);line-height:1.78;margin-bottom:28px}
+.room-price-block{padding-top:24px;border-top:0.5px solid var(--faint)}
+.room-price-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.room-price-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint)}
+.room-price-val{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink)}
+.room-price-val.featured{color:#5c3d2a}
+.room-note{font-size:11px;color:var(--faint);margin-top:8px}
+.rooms-payment{margin-top:40px;padding:28px 32px;background:var(--cream);display:flex;gap:48px;align-items:flex-start}
+.payment-item{flex:1}
+.payment-label{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+.payment-val{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.payment-sub{font-size:12px;color:var(--mid)}
+
+/* ── SCHEDULE ── */
+.s-schedule{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
+.s-schedule h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 16px}
+.schedule-intro{font-size:15px;color:var(--mid);max-width:520px;line-height:1.88;margin-bottom:56px}
+.days-grid{display:grid;gap:0}
+.day-row{display:grid;grid-template-columns:140px 1fr;border-top:0.5px solid var(--faint)}
+.day-row:last-child{border-bottom:0.5px solid var(--faint)}
+.day-label{padding:32px 28px;border-right:0.5px solid var(--faint)}
+.day-num{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--faint);line-height:1}
+.day-name{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);margin-top:6px}
+.day-date{font-size:11px;color:var(--faint);margin-top:3px}
+.day-content{padding:32px 36px}
+.day-title{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:8px;color:var(--ink)}
+.day-desc{font-size:13px;color:var(--mid);line-height:1.82}
+.day-medicine{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5c3d2a;background:rgba(92,61,42,0.08);padding:5px 12px;border-radius:2px}
+
+/* ── MEDICINES ── */
+.s-medicines{background:var(--ink);color:var(--off);padding:100px 56px}
+.s-medicines .s-label{color:#555250}
+.s-medicines h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 16px;color:var(--off)}
+.medicines-intro{font-size:15px;color:#888583;max-width:560px;line-height:1.88;margin-bottom:60px}
+.medicine-item{display:grid;grid-template-columns:5fr 7fr;gap:0;border-top:0.5px solid #1a1816;padding:56px 0}
+.medicine-item:last-child{border-bottom:0.5px solid #1a1816}
+.medicine-left{padding-right:56px}
+.medicine-num{font-family:var(--serif);font-size:52px;font-weight:300;color:#1f1d1b;line-height:1;margin-bottom:16px}
+.medicine-name{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--off);margin-bottom:6px}
+.medicine-sub{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#555250}
+.medicine-tag{display:inline-block;margin-top:16px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border:0.5px solid #2c2a28;color:#625f5c}
+.medicine-right p{font-size:15px;color:#888583;line-height:1.92;margin-bottom:20px}
+.medicine-right p:last-child{margin-bottom:0}
+.medicine-right strong{color:#a8a5a0;font-weight:400}
+.medicine-disclaimer{margin-top:48px;padding:24px 28px;border-left:1.5px solid #2c2a28;font-size:13px;color:#555250;line-height:1.75}
+
+/* ── EXCURSIONS ── */
+.s-excursions{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
+.excursions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--faint);margin-top:44px}
+.excursion-item{background:var(--cream);padding:36px 24px}
+.excursion-icon{margin-bottom:14px;opacity:0.35}
+.excursion-name{font-family:var(--serif);font-size:17px;font-weight:400;margin-bottom:8px}
+.excursion-desc{font-size:13px;color:var(--mid);line-height:1.75}
+.excursions-note{margin-top:28px;font-size:13px;color:var(--mid)}
+
+/* ── LOGISTICS ── */
+.s-logistics{background:#fff;padding:100px 56px}
+.logistics-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.logistics-block h3{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:16px}
+.logistics-block p{font-size:14px;color:#3c3a38;line-height:1.85;margin-bottom:14px}
+.logistics-block p:last-of-type{margin-bottom:0}
+.logistics-table{width:100%;border-collapse:collapse;margin-top:8px}
+.logistics-table tr{border-bottom:0.5px solid var(--faint)}
+.logistics-table tr:last-child{border-bottom:none}
+.logistics-table td{padding:12px 0;font-size:13px;vertical-align:top}
+.logistics-table td:first-child{color:var(--mid);width:140px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding-top:14px}
+
+/* ── FAQ ── */
+.s-faq{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
+.s-faq h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 48px}
+.faq-item{border-top:0.5px solid var(--faint);padding:28px 0}
+.faq-item:last-child{border-bottom:0.5px solid var(--faint)}
+.faq-q{font-family:var(--serif);font-size:19px;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.faq-q-text{flex:1}
+.faq-toggle{font-size:18px;color:var(--mid);font-family:var(--sans);font-weight:300;flex-shrink:0;transition:transform 0.3s;line-height:1.5}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{font-size:14px;color:#3c3a38;line-height:1.88;max-width:680px;display:none;padding-top:16px}
+.faq-item.open .faq-a{display:block}
+
+/* ── CLOSE ── */
+.s-close{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:100px 56px;text-align:center}
+.s-close-bg{position:absolute;inset:0;z-index:0}
+.s-close-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.s-close-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,8,6,0.45) 0%,rgba(10,8,6,0.75) 55%,rgba(10,8,6,0.92) 100%)}
+.s-close-in{position:relative;z-index:2;max-width:540px;margin:0 auto}
+.s-close h2{font-family:var(--serif);font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:var(--off);line-height:1.04;margin-bottom:20px}
+.s-close p{font-size:15px;color:#888583;line-height:1.88;margin-bottom:52px}
+.s-close-ctas{display:flex;flex-direction:column;align-items:center;gap:16px}
+.cta-primary{display:inline-block;background:#3D2B1F;color:var(--off);text-decoration:none;padding:18px 44px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;transition:background 0.2s;border-radius:1px}
+.cta-primary:hover{background:#2e2016}
+.cta-secondary{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#888583;text-decoration:none;border-bottom:0.5px solid #2c2a28;padding-bottom:5px;transition:color 0.2s,border-color 0.2s}
+.cta-secondary:hover{color:var(--off);border-color:#888583}
+.s-close-domain{margin-top:80px;font-family:var(--serif);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#333130}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  nav{padding:0 20px}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#0F0E0C;z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+  .nav-links.open{display:flex}
+  .nav-ham{display:flex}
+  .hero-content{padding:0 24px 72px}
+  .hero-facts{flex-wrap:wrap;gap:28px}
+  .s-overview,.s-includes,.s-venue,.s-rooms,.s-schedule,.s-medicines,.s-excursions,.s-logistics,.s-faq,.s-close{padding:60px 24px}
+  .s-overview-grid,.venue-grid,.logistics-grid{grid-template-columns:1fr;gap:44px}
+  .venue-right{padding-left:0;border-left:none;border-top:0.5px solid #2c2a28;padding-top:36px}
+  .venue-dv{text-align:left}
+  .includes-grid,.rooms-grid{grid-template-columns:1fr}
+  .include-item{border-right:none}
+  .room-card{border-right:none}
+  .rooms-payment{flex-direction:column;gap:24px}
+  .day-row{grid-template-columns:80px 1fr}
+  .day-label{padding:20px 16px;border-right:0.5px solid var(--faint)}
+  .day-content{padding:20px 20px}
+  .medicine-item{grid-template-columns:1fr;gap:24px}
+  .medicine-left{padding-right:0;border-bottom:0.5px solid #1a1816;padding-bottom:24px}
+  .excursions-grid{grid-template-columns:1fr 1fr}
+  .s-venue-photos{grid-template-columns:1fr 1fr}
+  .venue-photo.wide{grid-column:span 2}
+  .s-imgbreak{height:45vh}
+  .s-close{padding:80px 24px}
+}
+@media(max-width:480px){
+  .excursions-grid{grid-template-columns:1fr}
+  .s-venue-photos{grid-template-columns:1fr}
+  .venue-photo.wide{grid-column:span 1;aspect-ratio:4/3}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.sacredjourneysretreats.com" class="nav-brand">Sacred Journeys</a>
+  <button class="nav-ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#s-medicines">The medicines</a></li>
+    <li><a href="#s-rooms">Investment</a></li>
+    <li><a href="#s-faq">Questions</a></li>
+    <li><a href="#s-close">Apply</a></li>
+  </ul>
+</nav>
+
+<!-- HERO — img-hero-ceremony.jpg -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img-hero-ceremony.jpg" alt="Sacred ceremony at sunset, Puerto Escondido">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow reveal">Sacred Journeys &nbsp;·&nbsp; Private Retreat Details</p>
+    <h1 class="reveal" style="transition-delay:100ms">November<br>2026.<br><em>The full picture.</em></h1>
+    <p class="hero-sub reveal" style="transition-delay:180ms">You've had the conversation. Here is everything you need to know — the venue, the medicines, the days, the rooms, and the logistics.</p>
+    <div class="hero-facts reveal" style="transition-delay:260ms">
+      <div>
+        <div class="hero-fact-label">Dates</div>
+        <div class="hero-fact-val">Nov 23 – 30</div>
+      </div>
+      <div>
+        <div class="hero-fact-label">Location</div>
+        <div class="hero-fact-val">Puerto Escondido</div>
+      </div>
+      <div>
+        <div class="hero-fact-label">Capacity</div>
+        <div class="hero-fact-val">10 – 15 people</div>
+      </div>
+      <div>
+        <div class="hero-fact-label">Investment</div>
+        <div class="hero-fact-val">$2,300 – $3,400</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="s-overview">
+  <div class="wrap">
+    <div class="s-overview-grid reveal">
+      <div>
+        <span class="s-label">What this is</span>
+        <h2>Seven days.<br><em>One chapter closing.<br>Another beginning.</em></h2>
+      </div>
+      <div class="s-overview-right">
+        <p>This is not a wellness weekend. It is not a yoga retreat with an optional sound bath. It is a structured, intentional container — seven days in Puerto Escondido, held by a team who has done this work themselves, guided by a shaman with nearly a decade of ceremony across four continents.</p>
+        <p>The first two days are for arriving. For slowing down enough to remember why you came. The ceremonies come later, once the group has landed, connected, and set intention together. The final days are for integrating — holding what came up, letting the realizations settle, and preparing to carry it home.</p>
+        <p>Everything in between is designed to support that arc. The meals, the movement, the excursions, the quiet time. None of it is filler. All of it is the container.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED: Aleck playing music — img-aleck-music.jpg -->
+<div class="s-imgbreak top">
+  <img src="img-aleck-music.jpg" alt="Aleck playing ancestral instruments with ocean view behind">
+</div>
+
+<!-- INCLUDES -->
+<section class="s-includes">
+  <div class="wrap">
+    <span class="s-label reveal">Everything that's included</span>
+    <div class="includes-grid reveal">
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Seven nights accommodation</div>
+        <div class="include-desc">Full exclusive use of the Pineapple Mansion. Private pool, rooftop, ocean views. Your home for the week.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">All meals</div>
+        <div class="include-desc">Three nourishing, locally sourced meals per day. Dietary preparation is built into the pre-ceremony guidance.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Three sacred medicine ceremonies</div>
+        <div class="include-desc">Held by Humberto and his team. Each medicine is approached at your own pace. Nothing is mandatory.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Sound healing and music</div>
+        <div class="include-desc">Live sound journeys with Aleck throughout the week. Ancestral instruments, frequencies, breathwork.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Somatic and integration work</div>
+        <div class="include-desc">Daily practices led by Aleck and Allie — movement, breath, cold immersion, integration circles, energetic support.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Nature excursions</div>
+        <div class="include-desc">Hot springs, dolphin tour, beach rituals. Fluid and intentional, not tourist activities.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Pre-retreat preparation</div>
+        <div class="include-desc">A 1:1 call with the team before arrival. Dietary guidance, intention setting, and readiness screening.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Three months integration support</div>
+        <div class="include-desc">The work continues when you return home. Ongoing community access and integration support post-retreat.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"></div>
+        <div class="include-title">Sacred Journeys community</div>
+        <div class="include-desc">Access to the ongoing WhatsApp community — 222+ members, active year-round.</div>
+      </div>
+    </div>
+    <p class="includes-note reveal">Not included: International flights. You are responsible for booking travel to Puerto Escondido (PXM). Everything from arrival onward is covered.</p>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="s-venue" id="s-venue">
+  <div class="wrap">
+    <div class="venue-grid reveal">
+      <div class="venue-left">
+        <span class="s-label">The venue</span>
+        <h2>The Pineapple<br><em>Mansion.</em></h2>
+        <p class="venue-desc">Rated the number one villa in Puerto Escondido for retreats and group stays. Located in La Barra — a quieter corner of the coast, five minutes on foot to a pristine beach, ten minutes by car to La Punta and Zicatela.</p>
+        <p class="venue-desc">Ten spacious rooms each with private bathrooms, AC, ceiling fans, and balconies. A private pool, a shaded rooftop kitchen and dining area with ocean views, hammocks, and art by João Incerti and Enrique Larios throughout. The entire property is yours exclusively for the week. No other guests. Complete privacy.</p>
+        <p class="venue-desc">It was designed for exactly this — for groups who need a space that holds both the depth of inner work and the ease of physical comfort. The energy of the place does something to people before the ceremonies even begin.</p>
+        <div class="venue-amenities">
+          <div class="venue-am"><span>Property</span>Full exclusive use</div>
+          <div class="venue-am"><span>Rating</span>4.79 · 87 reviews</div>
+          <div class="venue-am"><span>Pool</span>Private, full size</div>
+          <div class="venue-am"><span>Beach</span>5 min walk — La Barra</div>
+          <div class="venue-am"><span>Rooftop</span>Kitchen + dining + ocean view</div>
+          <div class="venue-am"><span>Rooms</span>10 rooms, 11 private baths</div>
+        </div>
+      </div>
+      <div class="venue-right">
+        <p class="venue-pull">"The whole energy of this space is designed for presence — connection to nature, integration, and deep inner work."</p>
+        <div class="venue-details">
+          <div class="venue-detail"><span class="venue-dl">Address</span><span class="venue-dv">La Barra, Puerto Escondido, Oaxaca</span></div>
+          <div class="venue-detail"><span class="venue-dl">Check-in</span><span class="venue-dv">November 23, 2026</span></div>
+          <div class="venue-detail"><span class="venue-dl">Check-out</span><span class="venue-dv">November 30, 2026</span></div>
+          <div class="venue-detail"><span class="venue-dl">Airport</span><span class="venue-dv">PXM — 15 min · ~300 peso taxi</span></div>
+          <div class="venue-detail"><span class="venue-dl">Town</span><span class="venue-dv">10 min to La Punta &amp; Zicatela</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE PHOTO STRIP -->
+<!-- Images: exterior, pool+mural, rooftop ocean view, corridor arches, communal area pool view -->
+<div class="s-venue-photos">
+  <div class="venue-photo wide">
+    <img src="img-venue-pool-mural.jpg" alt="Private pool and mural at Pineapple Mansion">
+  </div>
+  <div class="venue-photo">
+    <img src="img-venue-corridor.jpg" alt="Arched corridor at Pineapple Mansion">
+  </div>
+  <div class="venue-photo">
+    <img src="img-venue-rooftop.jpg" alt="Rooftop dining with ocean view">
+  </div>
+  <div class="venue-photo wide">
+    <img src="img-venue-communal.jpg" alt="Communal area looking through arch to pool">
+  </div>
+  <div class="venue-photo">
+    <img src="img-venue-room-1.jpg" alt="Double room with painted headboards">
+  </div>
+  <div class="venue-photo">
+    <img src="img-venue-room-2.jpg" alt="Double room with orange walls and artwork">
+  </div>
+</div>
+
+<!-- ROOMS & PRICING -->
+<section class="s-rooms" id="s-rooms">
+  <div class="wrap">
+    <span class="s-label reveal">Rooms &amp; investment</span>
+    <h2 class="reveal">Choose your space.</h2>
+    <p class="rooms-intro reveal">Three room tiers. All participants share the same experience, the same ceremonies, the same meals, and the same full container. The room choice is simply about how you want to sleep.</p>
+    <div class="rooms-grid reveal">
+      <div class="room-card">
+        <div class="room-tag">Shared occupancy</div>
+        <div class="room-name">Double Room</div>
+        <div class="room-img">
+          <img src="img-venue-room-1.jpg" alt="Double room at Pineapple Mansion">
+        </div>
+        <div class="room-desc">Shared with one other participant. Two beds, private ensuite bathroom, AC, ceiling fan, balcony, mosquito nets, fresh linens and towels daily.</div>
+        <div class="room-price-block">
+          <div class="room-price-row">
+            <span class="room-price-label">Early bird</span>
+            <span class="room-price-val">$2,300 USD</span>
+          </div>
+          <div class="room-price-row">
+            <span class="room-price-label">Standard</span>
+            <span class="room-price-val">$2,600 USD</span>
+          </div>
+          <div class="room-note">Six rooms available at this tier</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-tag">Single occupancy</div>
+        <div class="room-name">Private Room</div>
+        <div class="room-img">
+          <img src="img-venue-room-2.jpg" alt="Private room at Pineapple Mansion">
+        </div>
+        <div class="room-desc">Your own room, your own space. Private ensuite bathroom, full room to yourself. For those who need solitude between sessions and ceremonies.</div>
+        <div class="room-price-block">
+          <div class="room-price-row">
+            <span class="room-price-label">Early bird</span>
+            <span class="room-price-val featured">$2,700 USD</span>
+          </div>
+          <div class="room-price-row">
+            <span class="room-price-label">Standard</span>
+            <span class="room-price-val featured">$3,000 USD</span>
+          </div>
+          <div class="room-note">Three private rooms available</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-tag">Premium suite</div>
+        <div class="room-name">King Suite</div>
+        <div class="room-img">
+          <img src="img-venue-suite.jpg" alt="King suite at Pineapple Mansion">
+        </div>
+        <div class="room-desc">The premier room in the villa. King bed, most generous space, private bathroom. For those who want the fullest level of comfort and privacy.</div>
+        <div class="room-price-block">
+          <div class="room-price-row">
+            <span class="room-price-label">Investment</span>
+            <span class="room-price-val">$3,400 USD</span>
+          </div>
+          <div class="room-note">One king suite available</div>
+        </div>
+      </div>
+    </div>
+    <div class="rooms-payment reveal">
+      <div class="payment-item">
+        <div class="payment-label">To secure your spot</div>
+        <div class="payment-val">50% deposit</div>
+        <div class="payment-sub">Remaining balance due before arrival</div>
+      </div>
+      <div class="payment-item">
+        <div class="payment-label">Early bird deadline</div>
+        <div class="payment-val">September 30, 2026</div>
+        <div class="payment-sub">Early bird pricing available until spots fill</div>
+      </div>
+      <div class="payment-item">
+        <div class="payment-label">Payment plans</div>
+        <div class="payment-val">Available</div>
+        <div class="payment-sub">Mention this in your conversation with Trevor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="s-schedule" id="s-schedule">
+  <div class="wrap">
+    <span class="s-label reveal">The seven days</span>
+    <h2 class="reveal">How the week unfolds.</h2>
+    <p class="schedule-intro reveal">Two days to arrive and connect. Three ceremony days woven through the middle. Two days to integrate before returning home. The days between hold practices, excursions, shared meals, and time that is genuinely yours.</p>
+    <div class="days-grid reveal">
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">01</div>
+          <div class="day-name">Arrival</div>
+          <div class="day-date">Nov 23</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Land. Arrive. Breathe.</div>
+          <div class="day-desc">Arrival day. Check in, settle into your room, meet the group. A welcome meal together in the evening. Aleck leads an opening circle — setting the tone, naming intentions, and beginning to build the container that will hold the week.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">02</div>
+          <div class="day-name">Preparation</div>
+          <div class="day-date">Nov 24</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Rooting in before going deep.</div>
+          <div class="day-desc">A full day of preparation. Morning movement and breathwork with Aleck. Time at La Barra beach. An afternoon intention session with Humberto — your first time sitting with him before ceremony, beginning to feel the field. Evening sharing circle.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">03</div>
+          <div class="day-name">First ceremony</div>
+          <div class="day-date">Nov 25</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Kambo at dawn. Ayahuasca at night.</div>
+          <div class="day-desc">The first ceremony day. For those who choose it, Kambo is offered in the early morning — a physical cleanse and purge that prepares the body to receive. The day is quiet and intentional. In the evening, the Ayahuasca ceremony begins — held through the night by Humberto and his team, with live music and sound healing from Aleck.</div>
+          <div class="day-medicine">Kambo (optional) &nbsp;·&nbsp; Ayahuasca ceremony</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">04</div>
+          <div class="day-name">Rest + Satori</div>
+          <div class="day-date">Nov 26</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Stillness. Then the second medicine.</div>
+          <div class="day-desc">A gentle morning following ceremony. Light nourishing food, time to rest, journal, walk, or be quiet. In the afternoon, a Satori ceremony is held — gentler on the body, equally profound. An inner journey with its own rhythm and teachings, taken in capsule form, guided by Humberto.</div>
+          <div class="day-medicine">Satori ceremony</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">05</div>
+          <div class="day-name">Integration</div>
+          <div class="day-date">Nov 27</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Integration day. Nature. Movement. Rest.</div>
+          <div class="day-desc">A free day between the second and final ceremony. Morning practices with Aleck. Excursion options available — hot springs, beach, or simply the pool. The body needs to metabolize what has moved through it. This day is intentionally spacious.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">06</div>
+          <div class="day-name">Final ceremony</div>
+          <div class="day-date">Nov 28</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Bufo. Then the closing circle.</div>
+          <div class="day-desc">Morning: Bufo, held outdoors. A brief and complete experience — not a visionary journey but a full dissolution. Many describe it as a return to stillness before returning to themselves with unusual clarity. That evening: the closing circle. The group gathers to honor what happened, share what shifted, and close what was opened.</div>
+          <div class="day-medicine">Bufo ceremony</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">07</div>
+          <div class="day-name">Integration</div>
+          <div class="day-date">Nov 29</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">One final day before returning home.</div>
+          <div class="day-desc">A day for integration, connection, and reflection. Final practices. Shared meals. Time to process the week with the team and the group before departure. A closing ritual in the evening.</div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-num">08</div>
+          <div class="day-name">Departure</div>
+          <div class="day-date">Nov 30</div>
+        </div>
+        <div class="day-content">
+          <div class="day-title">Return home. The real work starts here.</div>
+          <div class="day-desc">Participants depart on the morning of November 30. Three months of post-retreat integration support continues after you leave. The group stays connected. The container does not close when you board your flight. That is by design.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL BLEED: Humberto with flame — img-humberto-fire.jpg -->
+<div class="s-imgbreak">
+  <img src="img-humberto-fire.jpg" alt="Humberto holding sacred flame, jungle behind">
+</div>
+
+<!-- MEDICINES -->
+<section class="s-medicines" id="s-medicines">
+  <div class="wrap">
+    <span class="s-label">The medicines</span>
+    <h2 class="reveal">Four medicines.<br><em>One sequence.</em></h2>
+    <p class="medicines-intro reveal">Each medicine has been chosen with intention. The combination is specific, potent, and complementary. This is a genuine introduction to sacred medicine, held in a container that is structured, safe, and beginner friendly. The majority of our October 2025 participants had no prior experience. All ceremonies are held by Humberto Alcalá and his team.</p>
+
+    <div class="medicine-item reveal">
+      <div class="medicine-left">
+        <div class="medicine-num">01</div>
+        <div class="medicine-name">Ayahuasca</div>
+        <div class="medicine-sub">The vine of remembrance</div>
+        <div class="medicine-tag">Night ceremony</div>
+      </div>
+      <div class="medicine-right">
+        <p>Brewed from two Amazonian plants with deep roots in indigenous healing traditions, Ayahuasca works like a mirror held to the interior of your life. It surfaces what has been buried, clarifies what has been obscured, and creates conditions for emotional release and deep insight.</p>
+        <p>The ceremony is long, often demanding, and facilitated by Humberto within a traditional Shipibo framework, with <strong>live music throughout from Aleck and the ceremonial team</strong>. What comes up is specific to each person. The container holds whatever arrives.</p>
+      </div>
+    </div>
+
+    <div class="medicine-item reveal">
+      <div class="medicine-left">
+        <div class="medicine-num">02</div>
+        <div class="medicine-name">Kambo</div>
+        <div class="medicine-sub">The purifier</div>
+        <div class="medicine-tag">Morning · optional</div>
+      </div>
+      <div class="medicine-right">
+        <p>Kambo is not a psychedelic. It is a powerful physical purge derived from the secretion of the Amazonian tree frog. Intense, brief, and deeply cleansing. It is used before the Ayahuasca ceremony because of what it does to the body — it clears, prepares, and opens.</p>
+        <p>The experience lasts thirty to forty minutes. Most participants describe feeling <strong>completely different on the other side of it</strong>. Lighter. More present. Ready. Kambo is optional and held with care and intention.</p>
+      </div>
+    </div>
+
+    <div class="medicine-item reveal">
+      <div class="medicine-left">
+        <div class="medicine-num">03</div>
+        <div class="medicine-name">Satori</div>
+        <div class="medicine-sub">The medicine of clarity</div>
+        <div class="medicine-tag">Afternoon ceremony</div>
+      </div>
+      <div class="medicine-right">
+        <p>Satori is unique to Humberto. A proprietary blend drawn from two plants with roots in Mexican and Middle Eastern healing traditions. Taken in capsule form. <strong>Gentler on the body than Ayahuasca</strong> but equally powerful in what it produces — clarity, emotional release, and a quality of insight that tends to arrive quietly and stay.</p>
+        <p>Participants often describe Satori as the medicine that makes sense of everything that came before it in the sequence. It is its own teacher, with its own rhythm and energetic signature.</p>
+      </div>
+    </div>
+
+    <div class="medicine-item reveal">
+      <div class="medicine-left">
+        <div class="medicine-num">04</div>
+        <div class="medicine-name">Bufo</div>
+        <div class="medicine-sub">The dissolution</div>
+        <div class="medicine-tag">Morning · outdoors</div>
+      </div>
+      <div class="medicine-right">
+        <p>Bufo is brief. Fifteen to twenty minutes. It is not a visionary journey. It is a <strong>complete reset of the sense of self</strong>, held in the open air, facilitated one person at a time. Many describe it as the most significant experience of their lives. Others describe it as returning home to a place they did not know they had forgotten.</p>
+        <p>It is not frightening if you are prepared for it. The preparation happens in the days prior. Bufo is the final medicine in the sequence for a reason. It closes what was opened.</p>
+      </div>
+    </div>
+
+    <div class="medicine-disclaimer reveal">
+      We honor these medicines as teachers. They are not taken recreationally. They are not shortcuts. Each one is served from a place of reverence and held within a container designed to support what they reveal.
+    </div>
+  </div>
+</section>
+
+<!-- EXCURSIONS -->
+<section class="s-excursions" id="s-excursions">
+  <div class="wrap">
+    <span class="s-label reveal">Between ceremonies</span>
+    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;margin:8px 0 16px">Time to breathe.</h2>
+    <p class="reveal" style="font-size:15px;color:var(--mid);max-width:520px;line-height:1.88">Rest is part of the work. The days between ceremony are intentionally spacious. Not every hour is scheduled. All of the below is available. None of it is mandatory.</p>
+    <div class="excursions-grid reveal">
+      <div class="excursion-item">
+        <div class="excursion-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 20h20M6 20V10l6-7 6 7v10"/></svg>
+        </div>
+        <div class="excursion-name">Beach and sunset</div>
+        <div class="excursion-desc">La Barra beach is five minutes on foot. Several days include ocean time. Sunset gatherings and informal rituals on the sand.</div>
+      </div>
+      <div class="excursion-item">
+        <div class="excursion-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="excursion-name">Hot springs</div>
+        <div class="excursion-desc">A day trip to natural hot springs in the surrounding mountains. A natural way to decompress between ceremony nights.</div>
+      </div>
+      <div class="excursion-item">
+        <div class="excursion-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 17l4-8 4 5 3-3 4 6"/></svg>
+        </div>
+        <div class="excursion-name">Nature hike</div>
+        <div class="excursion-desc">Movement and stillness in the natural terrain around Puerto Escondido. A chance to be in the body, in the trees.</div>
+      </div>
+      <div class="excursion-item">
+        <div class="excursion-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10z"/><path d="M7 13s1-2 5-2 5 2 5 2"/></svg>
+        </div>
+        <div class="excursion-name">Dolphin boat tour</div>
+        <div class="excursion-desc">An optional morning on the water. A small boat into the Pacific. Dolphins are a regular presence out here.</div>
+      </div>
+    </div>
+    <p class="excursions-note reveal">Excursions are offered as a group where possible. Some days you may prefer to stay at the villa. The pool, hammocks, and rooftop are always available.</p>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section class="s-logistics" id="s-logistics">
+  <div class="wrap">
+    <span class="s-label reveal">Getting there</span>
+    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;margin:8px 0 48px">Logistics.</h2>
+    <div class="logistics-grid reveal">
+      <div>
+        <div class="logistics-block">
+          <h3>Flights and arrival</h3>
+          <p>The nearest airport is Puerto Escondido International — airport code PXM. Direct flights are available from Mexico City (MEX) and Oaxaca City (OAX). Most international travelers fly into Mexico City first, then connect to Puerto Escondido.</p>
+          <p>From the airport, a taxi to the Pineapple Mansion costs approximately 300 pesos and takes about 15 minutes. Arrange your own transfer from the airport — everything from arrival at the villa onward is fully covered.</p>
+          <table class="logistics-table">
+            <tr><td>Arrival airport</td><td>PXM — Puerto Escondido</td></tr>
+            <tr><td>Connecting hub</td><td>MEX (Mexico City) or OAX (Oaxaca)</td></tr>
+            <tr><td>Airport to villa</td><td>~15 min &nbsp;·&nbsp; ~300 pesos taxi</td></tr>
+            <tr><td>Check-in</td><td>November 23, from 3pm</td></tr>
+            <tr><td>Check-out</td><td>November 30, by 10am</td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="logistics-block">
+          <h3>What to bring</h3>
+          <p>Light, comfortable clothing for warm weather. Puerto Escondido in late November is in the low 30s Celsius during the day, mid-20s at night. The ocean is warm. Bring a light layer for evenings.</p>
+          <p>Ceremony clothing: loose, comfortable, preferably natural fabrics. White or light colors are traditional for ceremony, though not required. Bring an eye mask and a journal. A full preparation guide is sent to accepted participants before arrival.</p>
+          <table class="logistics-table">
+            <tr><td>Weather</td><td>28–32°C days &nbsp;·&nbsp; 22–25°C nights</td></tr>
+            <tr><td>Ocean</td><td>Warm, swimmable &nbsp;·&nbsp; 5 min walk</td></tr>
+            <tr><td>Currency</td><td>Mexican Peso (MXN) &nbsp;·&nbsp; USD accepted</td></tr>
+            <tr><td>Language</td><td>Spanish &nbsp;·&nbsp; English spoken by team</td></tr>
+            <tr><td>Timezone</td><td>CST (UTC-6)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s-faq" id="s-faq">
+  <div class="wrap">
+    <span class="s-label reveal">Common questions</span>
+    <h2 class="reveal">Answered honestly.</h2>
+    <div class="reveal">
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do I need prior experience with plant medicine?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. All eight participants at the October 2025 retreat were first-timers. The container is specifically designed to be a genuine, safe introduction — not an experience that assumes prior knowledge. Humberto has worked with first-time participants in the vast majority of his 500+ ceremonies. What matters is readiness, not experience.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Can I come alone? Will I know anyone?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Most people arrive alone. By the end of day two, that changes. The preparation days are specifically designed to build genuine connection within the group before any ceremony begins. The people you go through this with tend to become some of the most significant relationships of your life — not because of sentiment, but because of what you witness together.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What if I have a difficult experience in ceremony?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Difficult experiences are part of the work. They are not failures and they are not emergencies. Humberto, Aleck, and Allie are present throughout every ceremony — not as observers, but as active holders of the space. If something intense arises, someone is always with you. The pre-retreat conversation also prepares you for what a challenging moment might look and feel like, and what to do when it arrives: surrender rather than resist.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">I take medication. Can I still participate?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">This depends entirely on the medication. SSRIs, MAOIs, antidepressants, blood thinners, and certain heart medications have known interactions with these medicines and in some cases represent genuine contraindications. This conversation happens in your pre-retreat screening — before you commit — so that Trevor and the team can assess fit honestly. We will never encourage someone to participate who shouldn't.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What is the dietary preparation?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">You will receive a full dietary guide after your spot is confirmed. Generally: reduce or eliminate alcohol, recreational drugs, processed foods, pork, and sexual activity in the week before arrival. Avoid SSRIs and MAOIs for a minimum of two weeks prior — consult your doctor. The preparation is not punishing. The cleaner the body arrives, the more available it is for the work.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do I have to do all of the ceremonies?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. Every ceremony is a choice made in the moment. You can participate in all of them, some of them, or one of them. Choosing not to participate in a ceremony on a given day does not remove you from the container — you remain part of the group and are held by the team throughout. The container does not pressure anyone toward any medicine. It only invites.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What happens after the retreat?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Three months of integration support through the Sacred Journeys community. The October 2025 group still communicates every day — seven months later, Steve described still thinking about the experience most days. The ceremony reveals. Integration is where transformation actually lands. The team takes the post-retreat period seriously because this is where the work either stabilizes or dissipates. The container is designed to make sure it stabilizes.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How do I confirm my spot?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">If you've received this page, you've already had the first conversation. The next step is confirming which room tier works for you and placing a 50% deposit. Spots are limited to 10–15 people and filled by conversation, not first-come-first-served. The right fit matters more than the timeline.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE — img-close-beach.jpg -->
+<section class="s-close" id="s-close">
+  <div class="s-close-bg">
+    <img src="img-close-beach.jpg" alt="The group walking the beach at sunset">
+  </div>
+  <div class="s-close-overlay"></div>
+  <div class="s-close-in reveal">
+    <h2>Ready to say yes.</h2>
+    <p>If you've read this far and something is still moving in you — that is enough. Send Trevor a message. The next step is one conversation away.</p>
+    <div class="s-close-ctas">
+      <a href="https://wa.me/529542061152?text=Hi%20Trevor%2C%20I've%20read%20through%20the%20retreat%20details%20and%20I'm%20ready%20to%20move%20forward%20with%20November%202026." class="cta-primary" target="_blank">Message Trevor on WhatsApp</a>
+      <a href="https://instagram.com/sacredjourneys.co" class="cta-secondary" target="_blank">Or reach out on Instagram &nbsp;@sacredjourneys.co</a>
+    </div>
+    <div class="s-close-domain">sacredjourneysretreats.com</div>
+  </div>
+</section>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver(e => {
+  e.forEach(el => {
+    if(el.isIntersecting){ el.target.classList.add('in'); io.unobserve(el.target); }
+  });
+}, {threshold: 0.06, rootMargin: '0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Hero reveals on load
+document.querySelectorAll('.hero .reveal').forEach(el => {
+  const d = parseInt(el.style.transitionDelay) || 0;
+  setTimeout(() => el.classList.add('in'), d + 80);
+});
+
+// Nav hamburger
+(function(){
+  var btn = document.getElementById('navHam'), links = document.getElementById('navLinks');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open') });
+  });
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
