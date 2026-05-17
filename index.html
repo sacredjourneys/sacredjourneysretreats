@@ -489,8 +489,7 @@ async function stage1() {
   let s1tries = 0;
   async function s1submit() {
     const val = input.value.trim().toLowerCase().replace(/['']/g, "'");
-    if (val === 'i am' || val === 'i am.' || val === 'iam' ||
-        val === 'i am the medicine' || val === 'i am the medicine.' ||
+    if (val === 'i am the medicine' || val === 'i am the medicine.' ||
         val === 'the medicine' ||
         val === 'love' || val === 'love.' ||
         val === 'spirit' || val === 'a spirit' ||
@@ -500,8 +499,10 @@ async function stage1() {
         val === 'i am no one' || val === 'i am no one.' ||
         val === 'nobody' || val === 'no one' ||
         val === 'i am consciousness' || val === 'i am consciousness.' ||
+        val === 'pure consciousness' || val === 'pure consciousness.' ||
         val === 'i am nothing' || val === 'i am nothing.' ||
-        val === 'nothing') {
+        val === 'nothing' ||
+        val === 'eternal knowing' || val === 'eternal knowing.') {
       detachKb1();
       input.blur();
       startMusic();
