@@ -508,7 +508,7 @@ async function stage1() {
       w.textContent = wrongMsgs[(s1tries - 1) % wrongMsgs.length];
       reveal(w);
       input.value = '';
-      await wait(2400);
+      await wait(2900);
       unreval(w);
       if (window.innerWidth > 680) input.focus();
     }
