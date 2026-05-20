@@ -146,6 +146,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .day-desc{font-size:13px;color:var(--mid);line-height:1.82}
 .day-medicine{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5c3d2a;background:rgba(92,61,42,0.08);padding:5px 12px;border-radius:2px}
 
+/* ── TEAM ── */
+.s-team{background:var(--ink);padding:72px 56px;border-top:0.5px solid #1a1816}
+.team-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:800px;margin:0 auto}
+.team-member{padding:0 44px;text-align:center;border-right:0.5px solid #1a1816}
+.team-member:first-child{padding-left:0}
+.team-member:last-child{border-right:none;padding-right:0}
+.team-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center top;margin:0 auto 18px;display:block;filter:grayscale(15%);opacity:0.88}
+.team-name{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--off);margin-bottom:4px}
+.team-role{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#444240;margin-bottom:14px}
+.team-quote{font-family:var(--serif);font-style:italic;font-size:14px;color:#625f5c;line-height:1.7}
+@media(max-width:860px){
+  .s-team{padding:60px 24px}
+  .team-strip{grid-template-columns:1fr;gap:44px}
+  .team-member{padding:0;border-right:none;border-bottom:0.5px solid #1a1816;padding-bottom:44px}
+  .team-member:last-child{border-bottom:none;padding-bottom:0}
+}
+
 /* ── MEDICINES ── */
 .s-medicines{background:var(--ink);color:var(--off);padding:100px 56px}
 .s-medicines .s-label{color:#555250}
@@ -518,7 +535,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         </div>
         <div class="day-content">
           <div class="day-title">Land. Arrive. Breathe.</div>
-          <div class="day-desc">Arrival day. Check in, settle into your room, meet the group. A welcome meal together in the evening. Alec, Allie, and Trevor lead an opening circle — setting the tone, naming intentions, and beginning to build the container that will hold the week.</div>
+          <div class="day-desc">Arrival day. Check in, settle into your room, meet the group. A welcome meal together in the evening. Aleck, Allie, and Trevor lead an opening circle — setting the tone, naming intentions, and beginning to build the container that will hold the week.</div>
         </div>
       </div>
       <div class="day-row">
@@ -529,7 +546,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         </div>
         <div class="day-content">
           <div class="day-title">Rooting in before going deep.</div>
-          <div class="day-desc">A full day of preparation. Morning movement and breathwork with Alec and Allie. Time at La Barra beach. An afternoon intention session with Humberto — your first time sitting with him before ceremony, beginning to feel the field. Evening sharing circle.</div>
+          <div class="day-desc">A full day of preparation. Morning movement and breathwork with Aleck and Allie. Time at La Barra beach. An afternoon intention session with Humberto — your first time sitting with him before ceremony, beginning to feel the field. Evening sharing circle.</div>
         </div>
       </div>
       <div class="day-row">
@@ -609,6 +626,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <div class="s-imgbreak">
   <img src="img-humberto-fire.jpg" alt="Humberto holding sacred flame, jungle behind">
 </div>
+
+<!-- TEAM -->
+<section class="s-team">
+  <div class="team-strip reveal">
+    <div class="team-member">
+      <img class="team-photo" src="img-team-aleck.jpg" alt="Aleck">
+      <div class="team-name">Aleck</div>
+      <div class="team-role">Sound · Music · Ceremony</div>
+      <p class="team-quote">"Si no vives para servir, no sirves para vivir."</p>
+    </div>
+    <div class="team-member">
+      <img class="team-photo" src="img-team-allie.jpg" alt="Allie">
+      <div class="team-name">Allie</div>
+      <div class="team-role">Somatic · Breathwork · Integration</div>
+      <p class="team-quote">"You are your own healer. I'm just here to walk beside you as you remember."</p>
+    </div>
+    <div class="team-member">
+      <img class="team-photo" src="img-team-trevor.jpg" alt="Trevor">
+      <div class="team-name">Trevor</div>
+      <div class="team-role">Founder · Container · Connection</div>
+      <p class="team-quote">"The right environment can change everything."</p>
+    </div>
+  </div>
+</section>
 
 <!-- MEDICINES -->
 <section class="s-medicines" id="s-medicines">
