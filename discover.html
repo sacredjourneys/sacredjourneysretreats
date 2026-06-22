@@ -120,6 +120,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .d-nov p:last-of-type{margin-bottom:0}
 .d-nov-emph{color:#cbc8c2}
 
+/* ── VOICES (testimonial videos · cream) ── */
+.d-voices{background:var(--cream);padding:100px 56px}
+.d-voices .s-label{color:var(--mid)}
+.d-voices h2{font-family:var(--serif);font-size:clamp(32px,3.6vw,48px);font-weight:300;line-height:1.1;margin:6px 0 14px}
+.d-voices-intro{font-size:15px;color:var(--mid);max-width:520px;line-height:1.85;margin-bottom:52px}
+.d-voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:860px}
+.d-tvid-embed{width:100%;aspect-ratio:9/16;overflow:hidden;background:#000;margin-bottom:16px}
+.d-tvid-embed iframe{width:100%;height:100%;border:none;display:block}
+.d-tvid-quote{font-family:var(--serif);font-size:18px;font-weight:300;font-style:italic;color:var(--ink);line-height:1.45;margin-bottom:10px}
+.d-tvid-name{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid)}
+
+/* ── LOCATION (white) ── */
+.d-loc{background:#ffffff;padding:100px 56px;border-top:0.5px solid var(--faint)}
+.d-loc .wrap{max-width:760px}
+.d-loc h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,52px);font-weight:300;line-height:1.08;margin:6px 0 32px}
+.d-loc h2 em{font-style:italic}
+.d-loc p{font-size:15px;color:#3c3a38;line-height:1.9;margin-bottom:20px;max-width:680px}
+.d-loc p:last-of-type{margin-bottom:0}
+.d-loc-facts{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid var(--faint);margin-top:44px}
+.d-loc-fact{padding:24px 26px;border-right:0.5px solid var(--faint)}
+.d-loc-fact:last-child{border-right:none}
+.d-loc-fl{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.d-loc-fv{font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.3}
+
 /* ── 6 · FAQ (cream) ── */
 .d-faq{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
 .d-faq h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 48px}
@@ -165,8 +189,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   .nav-ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:210}
   .nav-ham span{display:block;width:22px;height:1px;background:var(--off);transition:all 0.25s}
   .d-hero-content{padding:0 24px 76px}
-  .d-origin,.d-team,.d-what,.d-nov,.d-faq,.d-cta{padding:64px 24px}
+  .d-origin,.d-team,.d-what,.d-nov,.d-voices,.d-loc,.d-faq,.d-cta{padding:64px 24px}
   .d-imgbreak{height:46vh}
+  .d-voices-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto;gap:44px}
+  .d-loc-facts{grid-template-columns:1fr}
+  .d-loc-fact{border-right:none;border-bottom:0.5px solid var(--faint)}
+  .d-loc-fact:last-child{border-bottom:none}
   .music-btn{bottom:20px;right:20px}
 }
 @media(max-width:620px){
@@ -220,6 +248,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </section>
 
+<!-- VOICES · testimonial videos -->
+<section class="d-voices" id="voices">
+  <div class="wrap">
+    <span class="s-label reveal">In their own words</span>
+    <h2 class="reveal">From the October 2025 group.</h2>
+    <p class="d-voices-intro reveal">All three were first-time sacred plant medicine experiences.</p>
+    <div class="d-voices-grid reveal">
+      <div>
+        <div class="d-tvid-embed">
+          <iframe src="https://www.youtube.com/embed/60mHETI6DHA?rel=0" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="d-tvid-quote">"I feel like I did decades of inner work in a week."</p>
+        <div class="d-tvid-name">Anna</div>
+      </div>
+      <div>
+        <div class="d-tvid-embed">
+          <iframe src="https://www.youtube.com/embed/Um2dXbE--fM?rel=0" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="d-tvid-quote">"You could have charged me 10 times the amount and I would have said here, take it."</p>
+        <div class="d-tvid-name">Harvie</div>
+      </div>
+      <div>
+        <div class="d-tvid-embed">
+          <iframe src="https://www.youtube.com/embed/oB6rMJ68tIc?rel=0" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="d-tvid-quote">"The group was just as medicinal to me."</p>
+        <div class="d-tvid-name">Liz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 3 · TEAM -->
 <section class="d-team" id="team">
   <div class="wrap">
@@ -233,17 +293,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       </div>
       <div>
         <div class="d-card-photo aleck"><img src="img-aleck.jpg" alt="Aleck, sound and somatic facilitator" loading="lazy"></div>
-        <div class="d-card-name">Aleck</div>
+        <div class="d-card-name">Aleck Urtaza</div>
         <p class="d-card-bio">Brings sound, breathwork, and somatic practice into the container. Cold plunge, music, movement &mdash; the physical thread that runs underneath the inner work.</p>
       </div>
       <div>
         <div class="d-card-photo allie"><img src="img-allie.jpg" alt="Allie, integration lead" loading="lazy"></div>
-        <div class="d-card-name">Allie</div>
+        <div class="d-card-name">Allie Schlener</div>
         <p class="d-card-bio">Holds integration. The part of the work that happens after the ceremony ends, when what surfaced needs somewhere to land.</p>
       </div>
       <div>
         <div class="d-card-photo trevor"><img src="img-team-trevor.jpg" alt="Trevor, founder and curator of Sacred Journeys" loading="lazy"></div>
-        <div class="d-card-name">Trevor</div>
+        <div class="d-card-name">Trevor Johnston</div>
         <p class="d-card-bio">Curates the whole experience. Not a facilitator himself, but the one who built this &mdash; who&rsquo;s in the room for the opening circle, the closing circle, and everything in between.</p>
       </div>
     </div>
@@ -283,6 +343,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <p>Seven days in Puerto Escondido, at a private oceanview villa held exclusively for the group. Three sacred medicines woven through the week: <span class="d-nov-emph">Ayahuasca</span>, held overnight by Humberto and his team. <span class="d-nov-emph">Satori</span>, his own proprietary blend &mdash; gentler but equally clarifying. <span class="d-nov-emph">Bufo</span>, brief and complete, closing the sequence. <span class="d-nov-emph">Kambo</span> offered as an optional physical purge before the deepest ceremony.</p>
       <p>Nothing is mandatory. Every ceremony is a choice made in the moment, and the container holds you either way.</p>
       <p>The week isn&rsquo;t only ceremony. Two days to arrive and settle. An excursion day for hot springs or the beach. A closing Thanksgiving dinner together before everyone leaves. Three months of integration support after you return home, because the work doesn&rsquo;t end when the retreat does.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE THIS IS -->
+<section class="d-loc" id="where">
+  <div class="wrap">
+    <span class="s-label reveal">Where this is</span>
+    <h2 class="reveal">Puerto Escondido,<br><em>on the coast of Oaxaca.</em></h2>
+    <div class="reveal">
+      <p>Puerto Escondido is a coastal town in Oaxaca, on the southern Pacific side of Mexico. The retreat is held in La Barra, a quieter corner of the coast, five minutes on foot to a pristine beach and ten minutes from La Punta and Zicatela.</p>
+      <p>The nearest airport is Puerto Escondido International (PXM). Direct flights are available from Mexico City (MEX) and Oaxaca City (OAX). Most international travelers fly into Mexico City first, then connect to Puerto Escondido. From the airport, the villa is about fifteen minutes by taxi.</p>
+      <p>In late November, Puerto Escondido sits in the mid to high 20s Celsius and the ocean is warm. If you&rsquo;ve never been, that&rsquo;s part of what people fall for &mdash; and you don&rsquo;t need to have any of the logistics figured out before you reach out.</p>
+    </div>
+    <div class="d-loc-facts reveal">
+      <div class="d-loc-fact"><div class="d-loc-fl">Region</div><div class="d-loc-fv">Puerto Escondido, Oaxaca, Mexico</div></div>
+      <div class="d-loc-fact"><div class="d-loc-fl">Arrival airport</div><div class="d-loc-fv">PXM &middot; ~15 min to the villa</div></div>
+      <div class="d-loc-fact"><div class="d-loc-fl">Late November</div><div class="d-loc-fv">Mid&ndash;high 20s &deg;C, warm ocean</div></div>
     </div>
   </div>
 </section>
