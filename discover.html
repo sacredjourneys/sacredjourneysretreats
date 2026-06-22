@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Journeys — Something is being built here</title>
+<meta name="description" content="An initiation space in Puerto Escondido, Mexico. Small retreats, a year-round community, and a team that has held this work for nearly a decade. If someone sent you here, this is what it actually is.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sacredjourneysretreats.com/discover">
+<meta property="og:title" content="Sacred Journeys — Something is being built here">
+<meta property="og:description" content="An initiation space in Puerto Escondido, Mexico. Small retreats, a year-round community, and a team that has held this work for nearly a decade.">
+<meta property="og:image" content="https://sacredjourneysretreats.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Sacred Journeys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sacred Journeys — Something is being built here">
+<meta name="twitter:description" content="An initiation space in Puerto Escondido, Mexico. If someone sent you here, this is what it actually is.">
+<meta name="twitter:image" content="https://sacredjourneysretreats.com/og-image.jpg">
+<link rel="canonical" href="https://sacredjourneysretreats.com/discover">
+<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img-hero.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0KGBN3LWJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P0KGBN3LWJ');
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0F0E0C;--off:#F5F3EE;--warm:#FAFAF7;--cream:#F6F4F1;--mid:#8A8780;--faint:#D4D2CE;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--off);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.75;overflow-x:hidden}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:56px;background:#0F0E0C}
+.nav-brand{font-family:var(--serif);font-size:15px;letter-spacing:0.22em;text-transform:uppercase;color:var(--off);text-decoration:none;font-weight:500}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#625f5c;text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--off)}
+.nav-ham{display:none}
+
+/* ── SHARED ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.in{opacity:1;transform:none}
+.s-label{display:block;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--mid);margin-bottom:18px}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* ── 1 · OPENER (hero) ── */
+.d-hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-top:56px;overflow:hidden}
+.d-hero-bg{position:absolute;inset:0;z-index:0}
+.d-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.d-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,8,6,0.94) 0%,rgba(10,8,6,0.78) 28%,rgba(10,8,6,0.42) 58%,rgba(10,8,6,0.15) 82%,transparent 100%)}
+.d-hero-content{position:relative;z-index:2;padding:0 56px 92px;max-width:660px}
+.d-hero-eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(245,243,238,0.6);margin-bottom:30px}
+.d-hero h1{font-family:var(--serif);font-size:clamp(48px,5.6vw,78px);font-weight:300;color:var(--off);line-height:1.05;margin-bottom:34px}
+.d-hero h1 em{font-style:italic;color:#7a7470}
+.d-hero-sub{font-size:15px;color:#a8a5a0;line-height:1.9;max-width:520px;margin-bottom:18px}
+.d-hero-note{font-size:15px;color:#7a7875;line-height:1.85;max-width:520px;margin-bottom:42px}
+.d-hero-cta{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--off);text-decoration:none;border-bottom:0.5px solid #2c2a28;padding-bottom:6px;transition:border-color 0.25s}
+.d-hero-cta:hover{border-color:#8a8580}
+.d-chevron{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(245,243,238,0.45);width:28px;animation:chevron-pulse 2.2s ease-in-out infinite}
+.d-chevron svg{width:100%;height:auto}
+@keyframes chevron-pulse{0%,100%{opacity:0.3;transform:translateX(-50%) translateY(0)}50%{opacity:0.8;transform:translateX(-50%) translateY(6px)}}
+
+/* ── 2 · ORIGIN (dark) ── */
+.d-origin{background:var(--ink);color:var(--off);padding:100px 56px;position:relative}
+.d-origin-scene{position:absolute;inset:0;overflow:hidden;z-index:0}
+.d-origin-scene img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.11;filter:saturate(0.5)}
+.d-origin .wrap{position:relative;z-index:1;max-width:760px}
+.d-origin .s-label{color:#555250}
+.d-origin h2{font-family:var(--serif);font-size:clamp(36px,4.2vw,56px);font-weight:300;line-height:1.07;margin:6px 0 36px}
+.d-origin h2 em{font-style:italic}
+.d-origin p{font-size:15px;line-height:1.92;color:#a8a5a0;margin-bottom:22px;max-width:680px}
+.d-origin p:last-of-type{margin-bottom:0}
+.d-origin-pull{margin-top:48px;padding-top:44px;border-top:0.5px solid #2c2a28}
+.d-origin-pull p{font-family:var(--serif);font-size:clamp(22px,2.8vw,34px);font-weight:300;font-style:italic;color:var(--off);line-height:1.4;max-width:740px;margin:0}
+
+/* ── 3 · TEAM (light) ── */
+.d-team{background:#ffffff;padding:100px 56px;border-top:0.5px solid var(--faint)}
+.d-team h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,52px);font-weight:300;line-height:1.08;margin:6px 0 56px}
+.d-team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+.d-card-photo{overflow:hidden;aspect-ratio:4/5;margin-bottom:22px;background:var(--faint)}
+.d-card-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(0.96) contrast(1.06) saturate(0.92)}
+.d-card-photo.humberto img{object-position:center 18%}
+.d-card-photo.aleck img{object-position:center 28%}
+.d-card-photo.allie img{object-position:center 30%}
+.d-card-photo.trevor img{object-position:center 22%}
+.d-card-name{font-family:var(--serif);font-size:23px;font-weight:400;margin-bottom:14px;line-height:1.15}
+.d-card-bio{font-size:13px;color:#3c3a38;line-height:1.85}
+.d-team-close{max-width:620px;margin-top:60px;padding-top:44px;border-top:0.5px solid var(--faint)}
+.d-team-close p{font-family:var(--serif);font-size:clamp(19px,2.2vw,25px);font-weight:300;line-height:1.5;color:var(--ink)}
+
+/* ── 4 · WHAT THIS IS (cream) ── */
+.d-what{background:var(--cream);padding:100px 56px}
+.d-what h2{font-family:var(--serif);font-size:clamp(40px,4.6vw,64px);font-weight:300;line-height:1.06;margin-top:8px;max-width:720px}
+.d-what h2 em{font-style:italic}
+.d-what-body{max-width:620px;margin-top:46px}
+.d-what-body p{font-size:15px;line-height:1.92;color:#3c3a38;margin-bottom:20px}
+.d-what-body p:last-child{margin-bottom:0}
+.d-what-statement{font-family:var(--serif);font-size:clamp(21px,2.2vw,32px);font-weight:300;font-style:italic;color:var(--ink);line-height:1.3;margin-top:52px;padding-top:46px;border-top:0.5px solid var(--faint);max-width:680px}
+
+/* ── full-bleed image break ── */
+.d-imgbreak{width:100%;height:58vh;overflow:hidden;display:block;line-height:0}
+.d-imgbreak img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+
+/* ── 5 · NOVEMBER 2026 (dark) ── */
+.d-nov{background:var(--ink);color:var(--off);padding:100px 56px}
+.d-nov .wrap{max-width:760px}
+.d-nov .s-label{color:#555250}
+.d-nov h2{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:300;line-height:1.04;margin:6px 0 36px}
+.d-nov p{font-size:15px;line-height:1.92;color:#a8a5a0;margin-bottom:22px;max-width:680px}
+.d-nov p:last-of-type{margin-bottom:0}
+.d-nov-emph{color:#cbc8c2}
+
+/* ── 6 · FAQ (cream) ── */
+.d-faq{background:var(--cream);padding:100px 56px;border-top:0.5px solid var(--faint)}
+.d-faq h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,50px);font-weight:300;line-height:1.06;margin:8px 0 48px}
+.faq-item{border-top:0.5px solid var(--faint);padding:28px 0}
+.faq-item:last-child{border-bottom:0.5px solid var(--faint)}
+.faq-q{font-family:var(--serif);font-size:19px;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.faq-q-text{flex:1}
+.faq-toggle{font-size:18px;color:var(--mid);font-family:var(--sans);font-weight:300;flex-shrink:0;transition:transform 0.3s;line-height:1.5}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{font-size:14px;color:#3c3a38;line-height:1.88;max-width:680px;display:none;padding-top:16px}
+.faq-item.open .faq-a{display:block}
+
+/* ── 7 · CLOSING CTA (dark hero) ── */
+.d-cta{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:100px 56px;text-align:center}
+.d-cta-bg{position:absolute;inset:0;z-index:0}
+.d-cta-bg img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.d-cta-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,8,6,0.55) 0%,rgba(10,8,6,0.8) 60%,rgba(10,8,6,0.92) 100%)}
+.d-cta-in{position:relative;z-index:2;max-width:520px;margin:0 auto}
+.d-cta h2{font-family:var(--serif);font-size:clamp(56px,6.5vw,88px);font-weight:300;font-style:italic;color:var(--off);line-height:1.06;margin-bottom:28px}
+.d-cta p{font-size:15px;color:#a8a5a0;line-height:1.88;margin-bottom:44px}
+.d-cta-btn{display:inline-block;background:#3D2B1F;color:var(--off);text-decoration:none;text-align:center;padding:18px 44px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.2s;border-radius:1px}
+.d-cta-btn:hover{background:#2e2016}
+.d-cta-sec{display:block;margin-top:28px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#888583;text-decoration:none;border-bottom:0.5px solid #2c2a28;padding-bottom:5px;width:fit-content;margin-left:auto;margin-right:auto;transition:color 0.2s,border-color 0.2s}
+.d-cta-sec:hover{color:var(--off);border-color:#555250}
+.d-cta-domain{margin-top:72px;font-family:var(--serif);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid)}
+
+/* ── Music player ── */
+.music-btn{position:fixed;bottom:28px;right:28px;z-index:300;display:flex;align-items:center;gap:9px;background:rgba(15,14,12,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--off);border:0.5px solid #2c2a28;border-radius:100px;padding:10px 20px 10px 14px;font-family:var(--sans);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity 0.7s ease,transform 0.7s ease,background 0.2s}
+.music-btn.visible{opacity:1;pointer-events:auto;transform:none}
+.music-btn:hover{background:rgba(35,32,28,0.96)}
+.music-icon{width:13px;height:13px;opacity:0.6;flex-shrink:0;transition:opacity 0.2s}
+.music-btn.playing .music-icon{opacity:1}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .d-team-grid{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:860px){
+  nav{padding:0 20px}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#0F0E0C;z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+  .nav-links.open{display:flex}
+  .nav-links.open a{color:var(--off);font-size:13px;letter-spacing:0.2em}
+  .nav-ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:210}
+  .nav-ham span{display:block;width:22px;height:1px;background:var(--off);transition:all 0.25s}
+  .d-hero-content{padding:0 24px 76px}
+  .d-origin,.d-team,.d-what,.d-nov,.d-faq,.d-cta{padding:64px 24px}
+  .d-imgbreak{height:46vh}
+  .music-btn{bottom:20px;right:20px}
+}
+@media(max-width:620px){
+  .d-team-grid{grid-template-columns:1fr;gap:44px;max-width:360px}
+  .d-card-photo{max-width:360px}
+  .d-hero h1{font-size:clamp(38px,10vw,56px)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">Sacred Journeys</a>
+  <button class="nav-ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#origin">How this started</a></li>
+    <li><a href="#team">The team</a></li>
+    <li><a href="#nov">November 2026</a></li>
+    <li><a href="#cta">Curious?</a></li>
+  </ul>
+</nav>
+
+<!-- 1 · OPENER -->
+<section class="d-hero" id="top">
+  <div class="d-hero-bg"><img src="img-hero.jpg" alt="Ceremony space at sunset in Puerto Escondido, Mexico"></div>
+  <div class="d-hero-overlay"></div>
+  <div class="d-hero-content">
+    <p class="d-hero-eyebrow reveal">Puerto Escondido, Mexico</p>
+    <h1 class="reveal" style="transition-delay:100ms">Something is<br>being built here.</h1>
+    <p class="d-hero-sub reveal" style="transition-delay:180ms">Sacred Journeys started as one retreat. It&rsquo;s becoming a season. A community. A way of living that more people keep finding their way into, often right when they need it most.</p>
+    <p class="d-hero-note reveal" style="transition-delay:240ms">If you&rsquo;re reading this, someone who trusts this work sent you here. That matters to us. Here&rsquo;s what it actually is.</p>
+    <a href="#origin" class="d-hero-cta reveal" style="transition-delay:320ms">How this started &darr;</a>
+  </div>
+  <div class="d-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+</section>
+
+<!-- 2 · ORIGIN -->
+<section class="d-origin" id="origin">
+  <div class="d-origin-scene"><img src="img-origin.jpg" alt="Sacred landscape near Puerto Escondido, Mexico" loading="lazy"></div>
+  <div class="wrap">
+    <span class="s-label reveal">How this started</span>
+    <h2 class="reveal">A week that didn&rsquo;t end<br><em>when people flew home.</em></h2>
+    <div class="reveal">
+      <p>In October 2025, eight people came to Puerto Escondido. All of them sitting with sacred plant medicine for the first time. Seven days, held inside one container.</p>
+      <p>Six months later, they still talk every day. They call each other familia, in their own words. One of them, Steve, said seven months out he still thinks about it most days. Olga called it one of the most meaningful experiences of her life. Anna called it her highlight of the year.</p>
+      <p>That retreat proved something. Not that plant medicine is powerful &mdash; that part was already known. It proved that the right container, held by the right people, can turn a week into something that doesn&rsquo;t end when people fly home.</p>
+    </div>
+    <div class="d-origin-pull reveal">
+      <p>November 2026 is the next chapter of that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · TEAM -->
+<section class="d-team" id="team">
+  <div class="wrap">
+    <span class="s-label reveal">Who&rsquo;s holding this</span>
+    <h2 class="reveal">Containers are only as strong<br>as the people holding them.</h2>
+    <div class="d-team-grid reveal">
+      <div>
+        <div class="d-card-photo humberto"><img src="img-humberto.jpg" alt="Humberto Alcal&aacute;, shaman and ceremony facilitator" loading="lazy"></div>
+        <div class="d-card-name">Humberto Alcal&aacute;</div>
+        <p class="d-card-bio">Has spent nearly a decade in ceremony, trained in the Shipibo tradition of Peru, with over 500 ceremonies facilitated across four continents. He holds the medicine work with a steadiness that comes from doing this far longer than most.</p>
+      </div>
+      <div>
+        <div class="d-card-photo aleck"><img src="img-aleck.jpg" alt="Aleck, sound and somatic facilitator" loading="lazy"></div>
+        <div class="d-card-name">Aleck</div>
+        <p class="d-card-bio">Brings sound, breathwork, and somatic practice into the container. Cold plunge, music, movement &mdash; the physical thread that runs underneath the inner work.</p>
+      </div>
+      <div>
+        <div class="d-card-photo allie"><img src="img-allie.jpg" alt="Allie, integration lead" loading="lazy"></div>
+        <div class="d-card-name">Allie</div>
+        <p class="d-card-bio">Holds integration. The part of the work that happens after the ceremony ends, when what surfaced needs somewhere to land.</p>
+      </div>
+      <div>
+        <div class="d-card-photo trevor"><img src="img-team-trevor.jpg" alt="Trevor, founder and curator of Sacred Journeys" loading="lazy"></div>
+        <div class="d-card-name">Trevor</div>
+        <p class="d-card-bio">Curates the whole experience. Not a facilitator himself, but the one who built this &mdash; who&rsquo;s in the room for the opening circle, the closing circle, and everything in between.</p>
+      </div>
+    </div>
+    <div class="d-team-close reveal">
+      <p>Every participant has a real conversation with the team before being accepted. This isn&rsquo;t a transaction. It&rsquo;s a container, and containers are only as strong as the people holding them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · WHAT THIS IS -->
+<section class="d-what" id="what">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="s-label">What this actually is</span>
+      <h2>Not a retreat company.<br><em>An initiation space.</em></h2>
+    </div>
+    <div class="d-what-body reveal">
+      <p>Sacred Journeys is not a retreat company. It&rsquo;s an initiation space &mdash; for people who look successful from the outside and feel something unresolved on the inside.</p>
+      <p>The retreats are intentionally small. Ten to fifteen people. Seven days. A structure that moves from arrival, to ceremony, to integration, with nothing rushed and nothing wasted.</p>
+      <p>But the retreat is only one part of it. In Puerto Escondido, there&rsquo;s a community that lives year round. Music and Mantras at sunset. Wellness Saturdays. Breathwork and sound journeys. Over 200 people in a community that&rsquo;s been gathering for more than a year.</p>
+    </div>
+    <p class="d-what-statement reveal">The retreat is the deepest expression of something that&rsquo;s already alive.</p>
+  </div>
+</section>
+
+<!-- full-bleed image break -->
+<section class="d-imgbreak reveal">
+  <img src="img-walk.jpg" alt="Walking along the beach at sunset in Puerto Escondido" loading="lazy">
+</section>
+
+<!-- 5 · NOVEMBER 2026 -->
+<section class="d-nov" id="nov">
+  <div class="wrap">
+    <span class="s-label reveal">The next chapter</span>
+    <h2 class="reveal">November 23&ndash;30, 2026.</h2>
+    <div class="reveal">
+      <p>Seven days in Puerto Escondido, at a private oceanview villa held exclusively for the group. Three sacred medicines woven through the week: <span class="d-nov-emph">Ayahuasca</span>, held overnight by Humberto and his team. <span class="d-nov-emph">Satori</span>, his own proprietary blend &mdash; gentler but equally clarifying. <span class="d-nov-emph">Bufo</span>, brief and complete, closing the sequence. <span class="d-nov-emph">Kambo</span> offered as an optional physical purge before the deepest ceremony.</p>
+      <p>Nothing is mandatory. Every ceremony is a choice made in the moment, and the container holds you either way.</p>
+      <p>The week isn&rsquo;t only ceremony. Two days to arrive and settle. An excursion day for hot springs or the beach. A closing Thanksgiving dinner together before everyone leaves. Three months of integration support after you return home, because the work doesn&rsquo;t end when the retreat does.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · COMMON QUESTIONS -->
+<section class="d-faq" id="faq">
+  <div class="wrap">
+    <span class="s-label reveal">Common questions</span>
+    <h2 class="reveal">A few honest answers.</h2>
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do I need experience with plant medicine?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. Every participant in October 2025 was a first-timer. The container is built for that.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Can I come alone?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">Most people do. By day two, that usually stops mattering.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What if I&rsquo;m on medication, or have health concerns?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a">That&rsquo;s exactly what the screening conversation is for. Nothing here is taken lightly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · CLOSING CTA -->
+<section class="d-cta" id="cta">
+  <div class="d-cta-bg"><img src="img-fire.jpg" alt="Ceremonial fire" loading="lazy"></div>
+  <div class="d-cta-overlay"></div>
+  <div class="d-cta-in reveal">
+    <h2>Curious?</h2>
+    <p>You don&rsquo;t need to have it figured out. You don&rsquo;t need to be ready to book anything. If something in this landed, send Trevor a message. That&rsquo;s the only next step that matters right now.</p>
+    <a href="https://wa.me/529542061152?text=Hi%20Trevor%2C%20I%20saw%20the%20Sacred%20Journeys%20page%20and%20wanted%20to%20learn%20more." class="d-cta-btn" target="_blank" rel="noopener">Message Trevor</a>
+    <a href="/nov2026" class="d-cta-sec">Or see the full November 2026 details &rarr;</a>
+    <div class="d-cta-domain">sacredjourneysretreats.com</div>
+  </div>
+</section>
+
+<script>
+// Reveal on scroll
+const io=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Hero reveals fire immediately on load
+document.querySelectorAll('.d-hero .reveal').forEach(el=>{
+  const d=parseInt(el.style.transitionDelay||0);
+  setTimeout(()=>el.classList.add('in'),d+60);
+});
+</script>
+
+<script>
+// Mobile nav
+(function(){
+  var btn=document.getElementById('navHam'),links=document.getElementById('navLinks');
+  btn.addEventListener('click',function(){
+    links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', links.classList.contains('open'));
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){links.classList.remove('open')});
+  });
+})();
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+<audio id="sj-audio" src="music.mp3" loop preload="none"></audio>
+<button class="music-btn" id="musicBtn" aria-label="Play sacred anthem">
+  <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <span id="musicLabel">Sacred Anthem</span>
+</button>
+<script>
+(function(){
+  var audio = document.getElementById('sj-audio');
+  var btn   = document.getElementById('musicBtn');
+  var label = document.getElementById('musicLabel');
+  var playing = false, muted = false;
+  var mo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ btn.classList.add('visible'); mo.unobserve(e.target); }
+    });
+  }, {threshold: 0.12});
+  mo.observe(document.getElementById('what'));
+  btn.addEventListener('click', function(){
+    if(!playing){
+      audio.volume = 0;
+      audio.play().then(function(){
+        playing = true;
+        btn.classList.add('playing');
+        label.textContent = 'Mute';
+        var vol = 0;
+        var fade = setInterval(function(){
+          vol = Math.min(vol + 0.01, 0.48);
+          audio.volume = vol;
+          if(vol >= 0.48) clearInterval(fade);
+        }, 80);
+      }).catch(function(){});
+    } else if(!muted){
+      audio.muted = true; muted = true;
+      label.textContent = 'Unmute';
+      btn.classList.remove('playing');
+    } else {
+      audio.muted = false; muted = false;
+      label.textContent = 'Mute';
+      btn.classList.add('playing');
+    }
+  });
+})();
+</script>
+</body>
+</html>
