@@ -9,14 +9,14 @@
 <meta property="og:url" content="https://sacredjourneysretreats.com/discover">
 <meta property="og:title" content="Sacred Journeys. Something is being built here.">
 <meta property="og:description" content="A community rooted in remembrance and presence. Sacred medicine retreats and a year-round community in Puerto Escondido, Mexico.">
-<meta property="og:image" content="https://sacredjourneysretreats.com/og-image.jpg">
+<meta property="og:image" content="https://sacredjourneysretreats.com/og-image-discover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Sacred Journeys">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sacred Journeys. Something is being built here.">
 <meta name="twitter:description" content="A community rooted in remembrance and presence, in Puerto Escondido, Mexico. If someone sent you here, this is what it is.">
-<meta name="twitter:image" content="https://sacredjourneysretreats.com/og-image.jpg">
+<meta name="twitter:image" content="https://sacredjourneysretreats.com/og-image-discover.jpg">
 <link rel="canonical" href="https://sacredjourneysretreats.com/discover">
 <link rel="icon" type="image/png" href="favicon.png?v=2">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -170,6 +170,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .d-cta-sec{display:block;margin-top:28px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#888583;text-decoration:none;border-bottom:0.5px solid #2c2a28;padding-bottom:5px;width:fit-content;margin-left:auto;margin-right:auto;transition:color 0.2s,border-color 0.2s}
 .d-cta-sec:hover{color:var(--off);border-color:#555250}
 .d-cta-domain{margin-top:72px;font-family:var(--serif);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid)}
+.d-cta-ig{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#888583;text-decoration:none;transition:color 0.2s}
+.d-cta-ig:hover{color:var(--off)}
+.d-cta-ig svg{width:15px;height:15px}
+
+/* ── COMMUNITY (soft entry · cream footer) ── */
+.d-community{background:var(--cream);padding:84px 56px;border-top:0.5px solid var(--faint)}
+.d-community .wrap{max-width:680px}
+.d-community h2{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;line-height:1.14;margin:6px 0 22px}
+.d-community p{font-size:15px;color:#3c3a38;line-height:1.9;max-width:600px;margin-bottom:34px}
+.d-community-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.d-ig-link{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:0.5px solid var(--ink);padding:13px 22px;transition:background 0.2s,color 0.2s}
+.d-ig-link:hover{background:var(--ink);color:var(--off)}
+.d-ig-link svg{width:16px;height:16px}
+.d-community-trevor{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);text-decoration:none;border-bottom:0.5px solid var(--faint);padding-bottom:4px;transition:color 0.2s,border-color 0.2s}
+.d-community-trevor:hover{color:var(--ink);border-color:var(--mid)}
 
 /* ── Music player ── */
 .music-btn{position:fixed;bottom:28px;right:28px;z-index:300;display:flex;align-items:center;gap:9px;background:rgba(15,14,12,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--off);border:0.5px solid #2c2a28;border-radius:100px;padding:10px 20px 10px 14px;font-family:var(--sans);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity 0.7s ease,transform 0.7s ease,background 0.2s}
@@ -190,7 +205,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   .nav-ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:210}
   .nav-ham span{display:block;width:22px;height:1px;background:var(--off);transition:all 0.25s}
   .d-hero-content{padding:0 24px 76px}
-  .d-origin,.d-team,.d-what,.d-nov,.d-voices,.d-loc,.d-faq,.d-cta{padding:64px 24px}
+  .d-origin,.d-team,.d-what,.d-nov,.d-voices,.d-loc,.d-faq,.d-cta,.d-community{padding:64px 24px}
   .d-imgbreak{height:46vh}
   .d-voices-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto;gap:44px}
   .d-loc-facts{grid-template-columns:1fr}
@@ -401,7 +416,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <p>You don&rsquo;t need to have it figured out. You don&rsquo;t need to be ready to book anything. If something in this landed, send Trevor a message. That&rsquo;s the only next step that matters right now.</p>
     <a href="https://wa.me/529542061152?text=Hi%20Trevor%2C%20I%20saw%20the%20Sacred%20Journeys%20page%20and%20wanted%20to%20learn%20more." class="d-cta-btn" target="_blank" rel="noopener">Message Trevor</a>
     <a href="/nov2026" class="d-cta-sec">Or see the full November 2026 details &rarr;</a>
+    <a href="https://instagram.com/sacredjourneys.co" class="d-cta-ig" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>See us on Instagram</a>
     <div class="d-cta-domain">sacredjourneysretreats.com</div>
+  </div>
+</section>
+
+<!-- COMMUNITY · soft entry to Puerto Escondido -->
+<section class="d-community" id="community">
+  <div class="wrap reveal">
+    <span class="s-label">Year round in Puerto Escondido</span>
+    <h2>Not here for the retreat? Still say hello.</h2>
+    <p>We&rsquo;re in Puerto Escondido all year, hosting events and gatherings. If you ever find yourself in town, reach out. We love helping people find their way, whether that&rsquo;s a place to stay, a moto, or the spots worth seeing.</p>
+    <div class="d-community-actions">
+      <a href="https://instagram.com/sacredjourneys.co" class="d-ig-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Follow on Instagram</a>
+      <a href="https://wa.me/529542061152?text=Hi%20Trevor%2C%20I%20saw%20the%20Sacred%20Journeys%20page%20and%20wanted%20to%20connect." class="d-community-trevor" target="_blank" rel="noopener">or message Trevor</a>
+    </div>
   </div>
 </section>
 
